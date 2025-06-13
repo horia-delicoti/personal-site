@@ -1,0 +1,19 @@
+docusaurus:
+  label: Docusaurus
+  permalink: /docusaurus
+  description: Docusaurus tag description
+
+raspberry-pi:
+  label: Raspberry Pi
+  permalink: /raspberry-pi
+  description: Raspberry Pi tag description
+
+hugo:
+  label: Hugo
+  permalink: /hugo
+  description: Hugo tag description
+
+tryhackme:
+  label: TryHackMe
+  permalink: /tryhackme
+  description: TryHackMe tag description
