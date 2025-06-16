@@ -8,7 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // Site title and tagline
-  title: 'Horia Delicoti.',
+  title: 'Horia Delicoti',
   tagline: 'Welcome to my DevOps Engineer website',
   favicon: 'img/profile-favicon.png', // Small icon that appears in browser tabs
 
