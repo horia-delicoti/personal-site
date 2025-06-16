@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpersonal_site=self.webpackChunkpersonal_site||[]).push([[8121],{8070:e=>{e.exports=JSON.parse('{"tags":[{"label":"Raspberry Pi","permalink":"/blog/tags/raspberry-pi","description":"Raspberry Pi tag description","count":2},{"label":"Hugo","permalink":"/blog/tags/hugo","description":"Hugo tag description","count":1}]}')}}]);

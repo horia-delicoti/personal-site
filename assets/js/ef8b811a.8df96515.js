@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpersonal_site=self.webpackChunkpersonal_site||[]).push([[8947],{6600:i=>{i.exports=JSON.parse('{"authors":[{"name":"Horia Delicoti","url":"https://horia.delicoti.com","socials":{"linkedin":"https://www.linkedin.com/in/horia-delicoti/","github":"https://github.com/horia-delicoti"},"key":"horia","page":null,"count":0}]}')}}]);

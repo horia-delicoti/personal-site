@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://horia.delicoti.com/blog</id>
+    <title>Horia Delicoti Blog</title>
+    <updated>2023-04-15T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://horia.delicoti.com/blog"/>
+    <subtitle>Horia Delicoti Blog</subtitle>
+    <icon>https://horia.delicoti.com/img/profile-favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Increase Swap on a Raspberry Pi]]></title>
+        <id>https://horia.delicoti.com/blog/2023/04/15/increase-swap-pi</id>
+        <link href="https://horia.delicoti.com/blog/2023/04/15/increase-swap-pi"/>
+        <updated>2023-04-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The swap file is used to increase the system’s total accessible memory beyond its hardware capabilities.]]></summary>
+        <content type="html"><![CDATA[<p>The swap file is used to increase the system’s total accessible memory beyond its hardware capabilities.
+This means that when all of the Raspberry Pi’s RAM is exhausted, it can start using the swap file as memory instead.</p>
+<p>The addition of more virtual memory allows the system to deal with more memory intensive tasks without running into out of memory errors or having to shut down other additional packages.
+However, the downside to this is that accessing the swap file is a significantly slower process that can create slowdowns.</p>
+<p>The reason for this is that the swap file exists on your actual disk, which has significantly lower read and write speeds then your RAM.<br>
+<!-- -->Another caveat of a large swap file is that you need that space to be free on your SD Card. You can’t set a swap file on your Raspberry Pi larger than your available free space.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="you-will-need">You will need<a href="https://horia.delicoti.com/blog/2023/04/15/increase-swap-pi#you-will-need" class="hash-link" aria-label="Direct link to You will need" title="Direct link to You will need">​</a></h3>
+<ul>
+<li>A Raspberry-Pi setup (<a href="https://thepihut.com/products/raspberry-pi-starter-kit" target="_blank" rel="noopener noreferrer">starter kit</a> is a great way to start)</li>
+<li>A <a href="https://www.tomshardware.com/best-picks/raspberry-pi-microsd-cards" target="_blank" rel="noopener noreferrer">Micro SD Card</a></li>
+<li>Ethernet cable or Wi-Fi</li>
+<li><a href="https://thepihut.com/blogs/raspberry-pi-tutorials/how-do-i-power-my-raspberry-pi" target="_blank" rel="noopener noreferrer">Power Supply</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="increase-the-swap-file-on-a-raspberry-pi">Increase the Swap File on a Raspberry Pi<a href="https://horia.delicoti.com/blog/2023/04/15/increase-swap-pi#increase-the-swap-file-on-a-raspberry-pi" class="hash-link" aria-label="Direct link to Increase the Swap File on a Raspberry Pi" title="Direct link to Increase the Swap File on a Raspberry Pi">​</a></h3>
+<p>Before we can increase our Raspberry Pi’s swap file, we must first temporarily stop it.
+The swap file cannot be in use while we increase it.
+To stop the operating system from using the current swap file, run the following command.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> dphys-swapfile swapoff</span><br></span></code></pre></div></div>
+<p>Next, we need to modify the swap file configuration file.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">vim</span><span class="token plain"> /etc/dphys-swapfile</span><br></span></code></pre></div></div>
+<p>Within this config file, find the following line of text.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">CONF_SWAPSIZE</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">100</span><br></span></code></pre></div></div>
+<p>To increase or decrease the swap file, all you need to do is modify the numerical value you find here.
+This number is the size of the swap in megabytes.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">CONF_SWAPSIZE</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">1024</span><br></span></code></pre></div></div>
+<p>Whatever size you set, you must have that space available on your SD card.
+We can now re-initialize the Raspberry Pi’s swap file by running the command below.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> dphys-swapfile setup</span><br></span></code></pre></div></div>
+<p>With the swap now recreated to the newly defined size, we can now turn the swap back on.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> dphys-swapfile </span><span class="token function" style="color:#d73a49">swapon</span><br></span></code></pre></div></div>
+<p>To reload all programs with access to the new memory pool, then restart your device.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">reboot</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">References<a href="https://horia.delicoti.com/blog/2023/04/15/increase-swap-pi#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References">​</a></h2>
+<ul>
+<li><a href="https://pimylifeup.com/raspberry-pi-swap-file/" target="_blank" rel="noopener noreferrer">Raspberry Pi Swap File</a></li>
+</ul>]]></content>
+        <category label="Raspberry Pi" term="Raspberry Pi"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Install OS on an SSD with the RPi Imager]]></title>
+        <id>https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi</id>
+        <link href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi"/>
+        <updated>2023-04-07T09:08:00.000Z</updated>
+        <summary type="html"><![CDATA[I'll walk you through setting up your Raspberry Pi 4 to boot from an USB connected SSD. We'll start by flashing the SD card, then copy the card to the drive, move on to setting up the Pi and finish off by removing the SD card and allowing the Pi to boot from the SSD.]]></summary>
+        <content type="html"><![CDATA[<p>I'll walk you through setting up your Raspberry Pi 4 to boot from an USB connected SSD. We'll start by flashing the SD card, then copy the card to the drive, move on to setting up the Pi and finish off by removing the SD card and allowing the Pi to boot from the SSD.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="you-will-need">You will need<a href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi#you-will-need" class="hash-link" aria-label="Direct link to You will need" title="Direct link to You will need">​</a></h3>
+<ul>
+<li>A Raspberry-Pi setup (<a href="https://thepihut.com/products/raspberry-pi-starter-kit" target="_blank" rel="noopener noreferrer">starter kit</a> is a great way to start)</li>
+<li>A <a href="https://thepihut.com/products/wd-green-240gb-2-5-ssd" target="_blank" rel="noopener noreferrer">2.5" SSD</a> (SATA connection)</li>
+<li>A <a href="https://thepihut.com/products/ssd-to-usb-3-0-cable-for-raspberry-pi" target="_blank" rel="noopener noreferrer">USB to SATA Cable</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="install-rasbperry-pi-os">Install Rasbperry Pi OS<a href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi#install-rasbperry-pi-os" class="hash-link" aria-label="Direct link to Install Rasbperry Pi OS" title="Direct link to Install Rasbperry Pi OS">​</a></h3>
+<ul>
+<li>Install Raspberry Pi OS using <a href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener noreferrer">Raspberry Pi Imager</a></li>
+<li>Enable SSH</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="getting-started">Getting started<a href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi#getting-started" class="hash-link" aria-label="Direct link to Getting started" title="Direct link to Getting started">​</a></h2>
+<p>Copy SSH key:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">ssh-copy-id </span><span class="token parameter variable" style="color:#36acaa">-i</span><span class="token plain"> ~/.ssh/mykey user@host</span><br></span></code></pre></div></div>
+<p>Once you have Raspberry Pi OS installed you'll want to make sure it's all up to date</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">apt-get</span><span class="token plain"> update</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">apt</span><span class="token plain"> full-upgrade</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> rpi-update</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">reboot</span><br></span></code></pre></div></div>
+<p>Once you got back to your RPI Desktop:</p>
+<ul>
+<li>plug in your SSD</li>
+<li>Copy the content of SD card to SSD by using SD Card Copier</li>
+</ul>
+<p>Make sure you have the latest bootloder by running</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> rpi-eeprom-update </span><span class="token parameter variable" style="color:#36acaa">-d</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-a</span><br></span></code></pre></div></div>
+<p>Configure bootloader to boot from USB</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">sudo</span><span class="token plain"> raspi-config</span><br></span></code></pre></div></div>
+<p>Select:</p>
+<ul>
+<li>Advanced Option -&gt; Bootloder version -&gt; Select first option -&gt; Select No to reset boot ROM to defaults</li>
+<li>Advanced Option -&gt; Boot Order -&gt; Select USB Boot</li>
+<li>System Options -&gt; Boot / Auto Login -&gt; Console</li>
+</ul>
+<p>Shutdown your Raspberry Pi, remove the SD Card and boot your device</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="card-speed-test-using-the-dd-command">Card speed test using the dd command<a href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi#card-speed-test-using-the-dd-command" class="hash-link" aria-label="Direct link to Card speed test using the dd command" title="Direct link to Card speed test using the dd command">​</a></h2>
+<p>To find out the SD card write speed performance, we are creating 100MB of free storage space and five blocks of 20MB each</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">dd</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">if</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/dev/zero </span><span class="token assign-left variable" style="color:#36acaa">of</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">./speedTestFile </span><span class="token assign-left variable" style="color:#36acaa">bs</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">20M </span><span class="token assign-left variable" style="color:#36acaa">count</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">5</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">oflag</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">direct</span><br></span></code></pre></div></div>
+<p>To find out the read speed information of your SD card, issue the following command in the terminal:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">dd</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">if</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">./speedTestFile </span><span class="token assign-left variable" style="color:#36acaa">of</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/dev/zero </span><span class="token assign-left variable" style="color:#36acaa">bs</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">20M </span><span class="token assign-left variable" style="color:#36acaa">count</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">5</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">oflag</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">dsync</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">References<a href="https://horia.delicoti.com/blog/2023/04/07/set-up-SDD-with-rpi#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References">​</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=a8nzkLryGmM" target="_blank" rel="noopener noreferrer">How To Boot A Raspberry Pi 4 From An SSD</a></li>
+<li><a href="https://linuxhint.com/raspberry-pi-sd-card-speed-test/" target="_blank" rel="noopener noreferrer">How to Test Speed of Raspberry Pi SD Card</a></li>
+<li><a href="https://linuxhint.com/disable-gui-raspberry-pi/" target="_blank" rel="noopener noreferrer">How to Disable Desktop GUI on Raspberry Pi</a></li>
+</ul>]]></content>
+        <category label="Raspberry Pi" term="Raspberry Pi"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Create a static website with Hugo]]></title>
+        <id>https://horia.delicoti.com/blog/2023/03/29/static-web-hugo</id>
+        <link href="https://horia.delicoti.com/blog/2023/03/29/static-web-hugo"/>
+        <updated>2023-03-29T12:17:39.000Z</updated>
+        <summary type="html"><![CDATA[Static websites like online resume or blog sites can be created using HTML, CSS, and JavaScript if you are a front-end developer. However, it can be a bit of a headache for people who are not familiar with these technologies. More importantly, if you are creating a blog site, it’s difficult to maintain uniformity in all its pages. I am going to describe how we can create a static website without the need for such technologies.]]></summary>
+        <content type="html"><![CDATA[<p>Static websites like online resume or blog sites can be created using HTML, CSS, and JavaScript if you are a front-end developer. However, it can be a bit of a headache for people who are not familiar with these technologies. More importantly, if you are creating a blog site, it’s difficult to maintain uniformity in all its pages. I am going to describe how we can create a static website without the need for such technologies.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tools-used">Tools Used<a href="https://horia.delicoti.com/blog/2023/03/29/static-web-hugo#tools-used" class="hash-link" aria-label="Direct link to Tools Used" title="Direct link to Tools Used">​</a></h2>
+<ul>
+<li><a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>: A fast and modern static website engine</li>
+<li>Any text editor of your choice. I prefer <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">VS Code</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="getting-started">Getting Started<a href="https://horia.delicoti.com/blog/2023/03/29/static-web-hugo#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started">​</a></h2>
+<ol>
+<li>
+<p>Download and <a href="https://gohugo.io/installation/" target="_blank" rel="noopener noreferrer">install Hugo</a>. For more details, refer Hugo’s <a href="https://gohugo.io/getting-started/" target="_blank" rel="noopener noreferrer">getting started</a> guide.</p>
+</li>
+<li>
+<p>Once Hugo is installed, open a terminal and go to the folder where you want to store the code for your blog or static website</p>
+</li>
+<li>
+<p>Run these commands to create a Hugo site with the LoveIt theme</p>
+<p>Create the <a href="https://gohugo.io/getting-started/directory-structure/" target="_blank" rel="noopener noreferrer">directory structure</a> for your project in the quickstart directory.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">hugo new site quickstart</span><br></span></code></pre></div></div>
+<p>Change the current directory to the root of your project.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">cd</span><span class="token plain"> quickstart</span><br></span></code></pre></div></div>
+<p>Initialize an empty Git repository in the current directory.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">git</span><span class="token plain"> init</span><br></span></code></pre></div></div>
+<p>Go to <a href="http://themes.gohugo.io/" target="_blank" rel="noopener noreferrer">hugo themes</a> and clone a theme of your choice in the themes fodler. I cloned the <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer">LoveIt</a> theme into the themes directory, adding it to your project as a Git submodule.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">git</span><span class="token plain"> clone --recurse-submodule git@github.com:horia-delicoti/LoveIt.git themese/LoveIt</span><br></span></code></pre></div></div>
+<p>Append a line to the site configuration file, indicating the current theme.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">echo</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"theme = 'LoveIt'"</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&gt;&gt;</span><span class="token plain"> config.toml</span><br></span></code></pre></div></div>
+<p>Start Hugo’s development server to view the site.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">hugo server</span><br></span></code></pre></div></div>
+<p>Press Ctrl + C to stop Hugo’s development server.</p>
+<p>Go to <a href="http://localhost:1313/" target="_blank" rel="noopener noreferrer">http://localhost:1313</a></p>
+</li>
+<li>
+<p>To create a new blog entry, run hugo command. It will create a file in <code>content/post/</code> folder</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">hugo new post/</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">blog-file-name</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">.md</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>Open the newly created file in the text editor of your choice and start drafting the blog</p>
+</li>
+<li>
+<p>Once you are done drafting the content, delete the contents of public folder and run hugo command to regenerate the files</p>
+</li>
+<li>
+<p>Create a repo on Github and check in the content of the public folder</p>
+</li>
+<li>
+<p>To publish on <code>GitHub Pages</code>, follow <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/" target="_blank" rel="noopener noreferrer">here</a>. If you want to use a custom domain, please follow <a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages" target="_blank" rel="noopener noreferrer">this</a>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">References<a href="https://horia.delicoti.com/blog/2023/03/29/static-web-hugo#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References">​</a></h2>
+<ul>
+<li><a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">VS Code</a></li>
+<li><a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages" target="_blank" rel="noopener noreferrer">Using a custom domain with github pages</a></li>
+</ul>]]></content>
+        <category label="Hugo" term="Hugo"/>
+    </entry>
+</feed>
