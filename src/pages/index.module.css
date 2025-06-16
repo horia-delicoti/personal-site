@@ -1,0 +1,115 @@
+/* Main hero section: centers all content vertically and horizontally, fills viewport height, uses site background color */
+.heroSection {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-background-color);
+  padding: 0 1rem;
+}
+
+/* "Hi, my name is" text: slightly smaller, gray color, spaced from name */
+.introText {
+  font-size: 1.6rem;
+  color: var(--ifm-color-gray-600, #888); /* Uses Docusaurus gray if available, else fallback */
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+
+/* Name: large, bold, centered, uses main font color for theme compatibility */
+.name {
+  font-size: 3.3rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Typewriter effect text: medium size, blue, monospace font, centered */
+.typewriter {
+  font-size: 1.4rem;
+  color: var(--ifm-color-primary);
+  min-height: 2.2rem;
+  margin-bottom: 1.2rem;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  text-align: center;
+}
+
+/* Description paragraph: slightly larger, main font color, centered, max width for readability */
+.description {
+  font-size: 1.3rem;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Row for button and social icons: horizontal layout, spacing between items */
+.buttonRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Download CV button: blue background, white text, rounded, shadow, hover effect for darker blue */
+.cvButton {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,120,231,0.08);
+}
+.cvButton:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* Social icons row: horizontal layout, spacing between icons */
+.socials {
+  display: flex;
+  gap: 1.1rem;
+}
+
+/* Social icon: blue color, grows on hover, uses theme color for dark mode compatibility */
+.socialIcon {
+  color: var(--ifm-color-primary);
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+}
+.socialIcon:hover {
+  color: var(--ifm-color-primary-dark);
+  transform: scale(1.15);
+}
+
+/* Responsive adjustments for small screens: shrink name, typewriter, and description font sizes */
+@media (max-width: 600px) {
+  .name {
+    font-size: 2rem;
+  }
+  .typewriter {
+    font-size: 1.05rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+
+/* Custom footer: centered text, padding, dark background, white text */
+.customFooter {
+  text-align: center;
+  color: var(--ifm-font-color-base, #111);
+  font-size: 0.95rem;
+  padding: 1.2rem 0 0.7rem 0;
+  background: none;
+  border: none;
+  margin-top: auto;
+  letter-spacing: 0.01em;
+}
