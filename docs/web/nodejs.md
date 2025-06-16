@@ -57,6 +57,7 @@ npm list -g --depth=0   # List globally installed packages
 ```
 
 **Global modules path:**  
+
 - Linux/macOS: `/usr/local/lib/node_modules/` or `~/.nvm/versions/node/<version>/lib/node_modules/`
 - macOS (Homebrew): `/opt/homebrew/lib/node_modules/`
 
