@@ -84,5 +84,18 @@ personal-site/
 - [Docusaurus Documentation](https://docusaurus.io/docs)
 - [GitHub Pages Deployment Guide](https://docusaurus.io/docs/deployment)
 - [React Documentation](https://react.dev/)
+- [Meta Knowledge](https://github.com/RichardLitt/meta-knowledge)
+- [Nikiv](https://nikiv.dev/) - My blog is inspired from here. Check it out
+
+---
+
+## 📝 TODO
+
+- [ ] Automatically check if links are still valid
+- [ ] Add search engine
+- [ ] Add more blog posts and technical articles
+- [☑️] Set up automated deployment (CI/CD)
+- [☑️] Add dark/light theme toggle
+- [ ] Collect site analytics
 
 ---

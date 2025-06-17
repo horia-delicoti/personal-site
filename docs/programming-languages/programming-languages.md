@@ -4,6 +4,8 @@ title: Programming Languages
 
 Programming languages are formal systems designed to communicate instructions to computers. They enable developers to write software, automate tasks, analyze data, and build everything from web applications to operating systems. Each language has its own syntax, features, and ideal use cases.
 
+[Crafting Interpreters](https://craftinginterpreters.com/) teaches you everything you need to implement a scripting language.
+
 ---
 
 ## 🌟 Key Concepts
@@ -35,7 +37,9 @@ Programming languages are formal systems designed to communicate instructions to
 - [Learn X in Y Minutes](https://learnxinyminutes.com/)
 - [Rosetta Code](https://rosettacode.org/wiki/Rosetta_Code)
 - [Programming Language Rankings (TIOBE)](https://www.tiobe.com/tiobe-index/)
-- [Awesome Programming Languages](https://github.com/aalhour/awesome-programming-languages)
+- [Awesome Programming Languages](https://github.com/learn-anything/programming-languages)
+- [Programming Languages](https://github.com/sindresorhus/awesome?tab=readme-ov-file#programming-languages)
+- [Analysis Tool](https://github.com/analysis-tools-dev/static-analysis)
 - [Exercism](https://exercism.org/) – Practice coding in many languages
 
 ---
