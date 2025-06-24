@@ -68,6 +68,12 @@ Artificial Intelligence (AI) is a field of computer science focused on creating 
 
 ---
 
+## Courses
+
+- [Artificial Intelligence Graduate Certificate](https://online.stanford.edu/programs/artificial-intelligence-graduate-certificate)
+
+---
+
 ## 📚 Books
 
 - [Awesome AI books](https://github.com/zslucky/awesome-AI-books)
