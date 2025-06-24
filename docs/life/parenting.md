@@ -1,6 +1,10 @@
-# Parenting
+---
+title: Parenting
+---
 
 A curated collection of resources, articles, and tools for modern parenting, child development, and education.
+
+[Parents](https://www.parents.com/parenting/) is a good inspiration and guidance website.
 
 ---
 
@@ -24,6 +28,7 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 - [Raise high achieving test taker](https://www.fatherly.com/health/raise-high-achieving-test-taker)
 - [I raised 2 successful CEOs and a doctor. Here’s the No. 1 skill I wish more parents taught their kids today](https://www.cnbc.com/2022/12/03/i-raised-2-successful-ceos-and-a-doctor-heres-the-no-1-skill-parents-are-failing-to-teach-kids-today.html)
 - [Harvard psychologist to parents: Do these 7 things if you want to raise kids with flexible, resilient brains](https://www.cnbc.com/2020/12/08/harvard-psychologist-rules-for-raising-intelligent-kids-with-resilient-brains.html)
+- [Authoritative Parenting Style](https://parentingscience.com/authoritative-parenting-style/)
 
 ---
 
@@ -34,14 +39,12 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 
 ---
 
-## 👶 Parenting Tools & Products
-
----
-
 ## 💻 Programming for Kids
 
 - [Awesome Programming for Kids](https://github.com/HollyAdele/awesome-programming-for-kids)
 - [How do I start my child coding](https://www.raspberrypi.org/blog/how-do-i-start-my-child-coding/)
+- [Give your students structure as they learn coding](https://www.raspberrypi.org/blog/how-to-give-your-students-structure-as-they-learn-programming-skills/)
+- [Learn to code by creating your own game](https://www.raspberrypi.org/blog/from-player-to-maker-learn-to-code-by-creating-your-own-game/)
 
 ---
 
