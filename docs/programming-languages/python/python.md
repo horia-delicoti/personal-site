@@ -13,7 +13,7 @@ title: Python
 - [Python Cheatsheet 2](https://www.pythoncheatsheet.org/)
 - [Python Cheatsheet 3](https://gto76.github.io/python-cheatsheet/)
 - [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python/)
-- [Wtf Python](https://github.com/satwikkansal/wtfpython) - Understanding Python through surprising snippets
+- [Underestand Python through snippets](https://github.com/satwikkansal/wtfpython)
 
 ---
 
@@ -55,6 +55,7 @@ deactivate                      # Deactivate virtualenv
 
 ## 🧑‍💻 Learning & Practice
 
+- [GeekForGeek: Python Tutorial](https://www.geeksforgeeks.org/python/python-programming-language-tutorial/)
 - [Python Roadmap](https://roadmap.sh/python)
 - [Hack in science](https://www.hackinscience.org/exercises/)
 - [LeetCode](https://leetcode.com/)
