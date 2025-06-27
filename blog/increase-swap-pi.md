@@ -1,5 +1,6 @@
 ---
 title: Increase Swap on a Raspberry Pi
+date: 2024-04-15
 tags: [raspberry-pi]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Create a static website with Hugo"
 subtitle: "In this article, we will explain how to create a blog site that incurs a minimal cost and doesn’t need our own hosting server."
-date: 2023-03-29
+date: 2024-03-29
 tags: [hugo]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Install OS on an SSD with the RPi Imager"
-date: 2023-04-07
+date: 2024-04-07
 tags: [raspberry-pi]
 ---
 I'll walk you through setting up your Raspberry Pi 4 to boot from an USB connected SSD. We'll start by flashing the SD card, then copy the card to the drive, move on to setting up the Pi and finish off by removing the SD card and allowing the Pi to boot from the SSD.
