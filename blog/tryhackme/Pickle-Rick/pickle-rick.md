@@ -5,14 +5,12 @@ date: 2025-06-27
 tags: [tryhackme]
 ---
 
-Pickle Rick is a CTF challenge vulnerable VM from Try Hack Me.
+This is a walkthrough for the TryHackMe room [Pickle Rick](https://tryhackme.com/room/picklerick). Let's help Rick find the ingredients he needs to make his serum and turn back into a human.
 
 > Listen Morty... I need your help, I've turned myself into a pickle again and this time I can't change back!
-
 <!-- truncate -->
-## Information Gathering
 
-This is a walkthrough for the TryHackMe room [Pickle Rick](https://tryhackme.com/room/picklerick). Let's help Rick find the ingredients he needs to make his serum and turn back into a human.
+## Information Gathering
 
 Start the machine and save IP address for the room.
 
@@ -20,8 +18,7 @@ Start the machine and save IP address for the room.
 export IP=10.10.94.57
 ```
 
-We start by getting a target IP address for the room. Let's use [ping](https://en.wikipedia.org/wiki/Ping_(networking_utility)) to check if the machine is reachable.
-The machine is up and running.
+Let's use [ping](https://en.wikipedia.org/wiki/Ping_(networking_utility)) to check if the machine is reachable.
 
 ```sh
 ping $IP
@@ -87,7 +84,14 @@ ssh R1ckRul3s@$IP
 R1ckRul3s@10.10.94.57: Permission denied (publickey).
 ```
 
-It seems that the SSH service is not allowing password authentication, so we need to find another way to authenticate.
+It seems that the SSH service is not allowing password authentication. This happens when SSH server **/etc/ssh/sshd_config** file is configured like this:
+
+```sh
+PasswordAuthentication no
+PubkeyAuthentication yes
+```
+
+so we need to find another way to authenticate.
 
 I can also see a **/assets/** directory in the source code. Let's check it out for any files that might contain more information.
 
@@ -95,8 +99,8 @@ I can also see a **/assets/** directory in the source code. Let's check it out f
 
 It seems that there are some files of CSS, JS code, few images and gifs in the **/assets/** directory, but nothing that stands out.
 
-If SSH is not allowing password authentication, we can try to find a way to exploit the web service to find a login page.
-Let's use Nikto to scan the web service for vulnerabilities.
+If [SSH](https://www.ssh.com/academy/ssh/protocol) is not allowing password authentication, we can try to find a way to exploit the web service to find a login page.
+Let's use [Nikto](https://github.com/sullo/nikto) to scan the web service for vulnerabilities.
 
 ```sh
 nikto -h $IP -o nikto/nikto.log
