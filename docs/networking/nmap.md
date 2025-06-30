@@ -6,22 +6,11 @@ Nmap (Network Mapper) is a powerful open-source tool for network discovery, secu
 
 ---
 
-## 🌟 Key Features
-
-- Host discovery (find live devices on a network)
-- Port scanning (identify open ports and services)
-- Service and version detection
-- OS detection and fingerprinting
-- Scriptable interaction with the target (Nmap Scripting Engine)
-- Output in multiple formats (plain text, XML, grepable, etc.)
-
----
-
 ## 📚 Useful Links
 
 - [The Official Nmap Project Guide to Network Discovery and Security Scanning](https://nmap.org/book/toc.html)
 - [Nmap Reference Guide](https://nmap.org/book/man.html)
-- [Nmap Cheat Sheet](https://github.com/trimstray/the-book-of-secret-knowledge#nmap)
+- [Nmap Cheat Sheet](https://www.stationx.net/nmap-cheat-sheet/)
 
 ---
 
@@ -95,7 +84,6 @@ nmap -Pn -sV --top-ports 100 <IP>
 ## 📝 Notes
 
 - Always have permission before scanning networks you do not own.
-- Nmap is available on Linux, macOS, and Windows.
 - The Nmap Scripting Engine (NSE) allows for advanced and automated scans.
 
 ---
