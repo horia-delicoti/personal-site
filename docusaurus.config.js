@@ -32,6 +32,14 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+  // Enable Mermaid diagrams in markdown files
+  markdown: {
+    mermaid: true,
+  },
+
+  // Enable the Mermaid theme plugin
+  themes: ['@docusaurus/theme-mermaid'],
+
   // Internationalization settings
   i18n: {
     defaultLocale: 'en',
