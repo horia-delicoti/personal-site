@@ -2,88 +2,303 @@
 title: Nmap
 ---
 
-Nmap (Network Mapper) is a powerful open-source tool for network discovery, security auditing, and vulnerability scanning. It is widely used by network administrators and security professionals to map networks, discover hosts and services, and identify potential security risks.
+[nmap](https://nmap.org/book/toc.html) (Network Mapper) is an [open-source tool](https://github.com/nmap/nmap) used for network discovery and security auditing. It can be used to discover hosts and services on a computer network, thus creating a "map" of the network.
 
----
+:::warning
+nmap uses **[scripts](https://nmap.org/nsedoc/scripts/)** that are considered intrusive and can cause issues on production systems. Always have permission before scanning networks you do not own.
+:::
 
-## 📚 Useful Links
-
-- [The Official Nmap Project Guide to Network Discovery and Security Scanning](https://nmap.org/book/toc.html)
-- [Nmap Reference Guide](https://nmap.org/book/man.html)
-- [Nmap Cheat Sheet](https://www.stationx.net/nmap-cheat-sheet/)
-
----
-
-## 🛠️ Useful Nmap Commands
+### Basic Usage
 
 ```sh
-nmap <target>                        # Basic scan (default 1000 ports)
-nmap -sS <target>                    # TCP SYN (stealth) scan
-nmap -sT <target>                    # TCP connect scan
-nmap -sU <target>                    # UDP scan
-nmap -p 80,443 <target>              # Scan specific ports
-nmap -p- <target>                    # Scan all 65535 ports
-nmap -A <target>                     # Enable OS detection, version detection, script scanning, and traceroute
-nmap -O <target>                     # OS detection only
-nmap -sV <target>                    # Service/version detection
-nmap -sC <target>                    # Run default scripts
-nmap -T4 <target>                    # Faster scan (aggressive timing)
-nmap -Pn <target>                    # Skip host discovery (treat all hosts as online)
-nmap --script vuln <target>          # Run vulnerability scripts
-nmap -oN <file> <target>             # Output scan to file (normal format)
-nmap -oX <file> <target>             # Output scan to file (XML format)
-nmap -iL <list.txt>                  # Scan targets from a file
-```
+nmap <IP>
+# Basic scan of a single IP address
 
-**Example:**
+nmap -sn <IP>
+# -sn: Ping scan - disable port scan (useful for active host, network discovery)
 
-```sh
-nmap -sC -sV -oN scan.txt 192.168.1.1
-# -sC: Run default scripts
+nmap -sC -sV -oN <file> <IP>
+# -sC: Run default scripts - https://nmap.org/nsedoc/categories/default.html
 # -sV: Probe open ports to determine service/version info
 # -oN: Output scan to file
 
-nmap -sC -sV -oN <file> <IP>
-#               -> Output scan to file
-#          -> Probe open ports to determine service/version info
-#       -> Script scan
-
-nmap -A -T4 <IP>
-# -A   -> Enable OS detection, version detection, script scanning, and traceroute
-# -T4  -> Aggressive timing for faster scan
+nmap -A -O -T4 --script=vuln <IP>
+# -A : Enable OS detection, version detection, script scanning, and traceroute
+# -T4: Aggressive timing for faster scan
+# -O: Enable OS detection
+# --script=vuln: Run vulnerability detection scripts
 
 nmap -p- -sS -T4 <IP>
-# -p-  -> Scan all 65535 ports
-# -sS  -> TCP SYN (stealth) scan
-# -T4  -> Faster scan
+# -p-: Scan all 65535 ports
+# -sS: TCP SYN (stealth) scan
+# -T4: Faster scan
+
+nmap -p 22,80,443 <IP>
+# -p: Scan specific ports (22, 80, 443)
 
 nmap -sU -sS -p 1-1000 <IP>
-# -sU  -> UDP scan
-# -sS  -> TCP SYN scan
-# -p   -> Scan ports 1-1000
-
-nmap --script vuln <IP>
-# --script vuln -> Run vulnerability detection scripts
+# -sU: UDP scan
+# -sS: TCP SYN scan
+# -p : Scan ports 1-1000
 
 nmap -O --osscan-guess <IP>
-# -O            -> OS detection
-# --osscan-guess -> Guess OS more aggressively
+# -O: OS detection
+# --osscan-guess: Guess OS more aggressively
 
 nmap -iL targets.txt -oA scan_results
-# -iL targets.txt -> Scan list of targets from file
-# -oA scan_results -> Output in all formats (normal, XML, grepable)
+# -iL targets.txt: Scan list of targets from file
+# -oA scan_results: Output in all formats (normal, XML, grepable)
 
 nmap -Pn -sV --top-ports 100 <IP>
-# -Pn         -> Treat all hosts as online (skip host discovery)
-# -sV         -> Service/version detection
-# --top-ports 100 -> Scan top 100 most common ports
+# -Pn: Treat all hosts as online (skip host discovery)
+# -sV: Service/version detection
+# --top-ports 100: Scan top 100 most common ports
+
+nmap -sV -sC -T4 -min-rate 5000 -p- <IP>
+# -sV: Service/version detection
+# -sC: Run default scripts
+# -T4: Aggressive timing for faster scan
+# -min-rate 5000: Minimum rate of packets sent per second
+# -p-: Scan all ports
 ```
 
----
+:::note
+**[RFC 9293](https://datatracker.ietf.org/doc/html/rfc9293)** states that: “If the connection is **CLOSED** or doesn’t exists, then a **RST** is sent in response.”
+:::
 
-## 📝 Notes
+### Ping Sweep
 
-- Always have permission before scanning networks you do not own.
-- The Nmap Scripting Engine (NSE) allows for advanced and automated scans.
+A [ping sweep](https://www.codecademy.com/resources/docs/cybersecurity/nmap/ping-sweep) is a network scanning technique to identify active devices on a network by pinging a range of IP addresses. Compared to other methods, ping sweeps can be harder to detect as it is not as aggressive and can skip regular scan stages, making it more of an advantage. Using "-sn", nmap disables port scsanning and only checks if hosts are up.
 
----
+```sh
+nmap -sn 192.168.1.0/24
+or
+nmap -sn 192.168.1.1-254
+```
+
+### Options Summary
+
+Options are case-sensitive. Use `-h` to see the help page. Latest version is available at [nmap.usage.txt](https://svn.nmap.org/nmap/docs/nmap.usage.txt).
+
+```sh title="TARGET SPECIFICATION"
+# Can pass hostnames, IP addresses, networks, etc.
+# Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254
+-iL <inputfilename> # Input from list of hosts/networks
+-iR <num hosts> # Choose random targets
+--exclude <host1[,host2][,host3],...> # Exclude hosts/networks
+--excludefile <exclude_file> # Exclude list from file
+
+Example:
+nmap 10.10.20.1
+nmap scanme.nmap.org # you have permission to scan this host
+nmap 10.10.10.1 10.10.10.2 10.10.10.3
+nmap 10.10.10.1,2,3 # Scan multiple IPs
+nmap 10.10.10.1-50  # Range of IPs
+nmap 10.10.10.0/24  # CIDR notation
+nmap 10.10.10.0/24 -iR 5 # Randomly choose 5 hosts from the specified network
+nmap 192.168.0.0/24 --exclude 192.168.0.2 # Exclude a specific host
+```
+
+```sh title="HOST DISCOVERY"
+-sP # Ping Scan - disable port scan (useful for host discovery)
+-sL # List Scan - simply list targets to scan
+-sn # Ping Scan - disable port scan
+-Pn # Treat all hosts as online; skip host discovery
+--dns-servers # serv1[,serv2],.. Specify custom DNS servers
+--system-dns  # Use OS's DNS resolver
+--traceroute  # Trace hop path to each host
+
+Example:
+nmap -sn -sL -Pn --traceroute --dns-servers 8.8.8.8,1.1.1.1 --system-dns 192.168.1.0/24
+```
+
+```sh title="SCAN TECHNIQUES"
+-sS # TCP SYN scan (stealth scan)
+-sT # TCP Connect scan (default scan)
+-sA # TCP ACK scan
+-sW # TCP Window scan
+-sM # TCP Maimon scan
+-sU # UDP Scan
+-sO # IP protocol scan
+-sN/sF/sX # TCP Null, FIN, and Xmas scans used to evade firewalls and packet filters. Microsoft Windows/Cisco devices respond with a RST to any malformed TCP packet
+```
+
+```sh title="PORT SPECIFICATION AND SCAN ORDER"
+-p- # Scans for all TCP ports ranging from 0-65535
+-p <port ranges> # Only scan specified ports: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
+-F # Fast mode - Scan fewer ports than the default scan
+-r # Scan ports sequentially - don't randomize
+--top-ports <number> # Scan <number> most common ports
+--exclude-ports <port ranges> # Exclude specified ports from scanning
+
+Example:
+nmap -p 22,80,443 192.168.1.10 # Scan only ports 22, 80, and 443 on the target
+nmap -p 1-1000 10.0.0.5        # Scan ports 1 through 1000
+nmap -p U:53,111,137,T:21-25,80,139,8080 192.168.1.15 # Scan UDP ports 53, 111, 137 and TCP ports 21-25, 80, 139, 8080
+```
+
+```sh title="SERVICE VERSION DETECTION"
+-sV # Enables service/version detection, what version of the service is running on the port
+```
+
+```sh title="SCRIPT SCAN"
+-sC # Runs a set list of default scripts
+--script-args-file=<filename> # provide NSE script args in a file
+--script-trace    # Show all data sent and received
+--script-updatedb # Update the script database.
+
+Example:
+nmap --script "default,vuln,auth,brute,discovery,exploit" -p 1-1000 <IP>
+```
+
+```sh title="OS DETECTION"
+-O             # Enable OS detection
+--osscan-limit # Limit OS detection to promising targets
+--osscan-guess # Guess OS more aggressively
+--fuzzy-osscan # Use fuzzy OS detection
+
+Example:
+nmap -O --osscan-limit --osscan-guess --fuzzy-osscan 192.168.1.1
+```
+
+```sh title="TIMING AND PERFORMANCE"
+--max-retries <tries> # Caps number of port scan probe retransmissions.
+--host-timeout <time> # Give up on target after this long
+--min-rate <number>   # Send packets no slower than <number> per second
+--max-rate <number>   # Send packets no faster than <number> per second
+--scan-delay/--max-scan-delay <time> # Adjust delay between probes
+
+Example:
+nmap -T4 --max-retries 2 --host-timeout 30s --min-rate 1000 --max-rate 5000 <IP>
+```
+
+```sh title="FIREWALL/IDS EVASION AND SPOOFING"
+-f; --mtu <val> # fragment packets (optionally w/given MTU)
+-S <IP_Address> # Spoof source IP address
+-e <iface>      # Use specified interface
+--badsum        # Send packets with a bogus TCP/UDP/SCTP checksum
+--ttl <val>     # Set the IP time-to-live field
+-D <decoy1,decoy2,...>        # Decoy scan using specified decoy IPs
+--data-length <number>        # Append random data to sent packets
+--spoof-mac <mac address>     # Spoof the MAC address of the interface
+--proxies <proxy1,proxy2,...> # Use specified proxies for the scan
+
+Example:
+nmap -f --mtu 8 -S 192.0.2.123 -e eth0 --badsum 192.168.1.100
+nmap -D nmap -D 10.10.10.44,10.10.10.12,10.10.10.15 10.10.10.5
+```
+
+```sh title="OUTPUT"
+-oN/-oX/-oS/-oG <file> # Output scan
+-v # Increase verbosity level (use -vv or more for greater effect)
+-d # Increase debugging level (use -dd or more for greater effect)
+--reason # Display the reason a port is in a particular state
+--open   # Only show open (or possibly open) ports
+--iflist # Print host interfaces and routes (for debugging)
+--packet-trace # Show all packets sent and received
+--append-output # Append to rather than clobber specified output files
+
+Example:
+nmap -oN scan_results.txt -oX scan_results.xml -oG scan_results.grepable
+```
+
+```sh title="MISCELLANEOUS"
+-A # Aggressive Scan. Enables OS detection "-O", version detection "-sV", script scanning "-sC", and traceroute "--traceroute"
+-V # Print version number
+-h # Print this help summary page.
+```
+
+### Port States
+
+Nmap [categorizes ports](https://nmap.org/book/man-port-scanning-basics.html) into several states based on the responses received during the scan
+
+| State       | Description |
+| ----------- | ----------- |
+| Open        | Port is open and accepting connections |
+| Closed      | Port is closed, no application is listening on it |
+| Filtered    | Port is filtered by a firewall or packet filter, preventing nmap from determining its state |
+| Unfiltered  | Port is reachable but nmap cannot determine if it is open or closed |
+| Open/Filtered   | Port is either open or filtered, nmap cannot determine which |
+| Closed/Filtered | Port is either closed or filtered, nmap cannot determine which |
+
+### Timing Templates
+
+Nmap provides [timing templates](https://nmap.org/book/performance-timing-templates.html) to control the speed and stealthiness of scans. The templates range from 0 (paranoid) to 5 (insane). The default is 3 (normal).
+
+```sh
+nmap -T0 <IP> # Paranoid - Serial, very slow scan
+nmap -T1 <IP> # Sneaky - Slow scan, good for avoiding detection
+nmap -T2 <IP> # Polite - Slows down scan to use less bandwidth and target machine resources
+nmap -T3 <IP> # Normal - Default scan speed
+nmap -T4 <IP> # Aggressive - Faster scan, good for most cases
+nmap -T5 <IP> # Insane - Very fast scan, can overwhelm networks and devices
+```
+
+### Understanding Network Traffic
+
+Changing the [TCP](/docs/networking/tcp.md) connection options in nmap or using browser changes the type of network traffic in [Wireshark](/docs/networking/wireshark.md). Differentiating all network scan traffic:
+
+- **Browser**: When accessing a web page, the browser initiates a full TCP connection to the server. This involves a three-way handshake (SYN, SYN-ACK, ACK) to establish the connection before sending HTTP requests.
+
+- **`nmap -sS`** (TCP SYN Scan): This scan sends a SYN packet to the target port. If the port is open, the target responds with a SYN-ACK packet. Nmap then sends an RST packet to close the connection, which is known as a half-open scan. This method is stealthier and faster because it does not complete the full TCP handshake.
+
+- **`nmap -sT`** (TCP Connect Scan): This scan establishes a full TCP connection by completing the three-way handshake (SYN, SYN-ACK, ACK) for each target port. This method is more likely to be logged by the target system because it establishes a full connection.
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant Nmap
+    participant Target
+
+    Note over Browser,Target: Browser (Full TCP Handshake)
+    Browser->>Target: SYN
+    Target->>Browser: SYN-ACK
+    Browser->>Target: ACK
+    Browser->>Target: HTTP Request
+
+    Note over Nmap,Target: Nmap -sS (SYN Scan)
+    Nmap->>Target: SYN
+    Target->>Nmap: SYN-ACK
+    Nmap->>Target: RST
+
+    Note over Nmap,Target: Nmap -sT (Connect Scan)
+    Nmap->>Target: SYN
+    Target->>Nmap: SYN-ACK
+    Nmap->>Target: ACK
+    Nmap->>Target: RST (after scan)
+```
+
+### Understanding NSE Scripts
+
+Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse-usage.html) allows users to write scripts to automate various tasks, such as vulnerability detection, service discovery, automate exploits and more.
+
+| Category    | Description |
+| ----------- | ----------- |
+| Safe      | Won't affect the target       |
+| Intrusive | Not safe: likely to affect the target |
+| Vuln      | Scan for vulnerabilities       |
+| Exploit   | Attempt to exploit a vulnerability |
+| Auth      | Attempt to bypass authentication for running services (e.g. Log into an FTP server anonymously) |
+| Brute     | Attempt to bruteforce credentials for running services |
+| Discovery | Attempt to query running services for further information about the network (e.g. query an SNMP server) |
+
+```sh
+nmap --script=vuln -p 80,443 192.168.100.1
+# Runs all vulnerability detection scripts against ports 80 and 443 on the target
+```
+
+### References
+
+- [Official Nmap Guide to Network Discovery](https://nmap.org/book/toc.html)
+- [Nmap Script Engine (NME) Default scripts](https://nmap.org/nsedoc/categories/default.html)
+- [Nmap Cheat Sheet by Stationx](https://www.stationx.net/nmap-cheat-sheet/)
+- [Essential nmap Commands for Pen Testings byt CBT Nuggets](https://www.cbtnuggets.com/blog/certifications/security/7-absolutely-essential-nmap-commands-for-pen-testing)
+- [Nmap scan techniques explained by Record Future](https://www.recordedfuture.com/threat-intelligence-101/tools-and-techniques/nmap-commands)
+- [Nmap basics for capture the flag CTF by Sagar Chamling](https://sagarchamling.com/notes/nmap-basic-for-capture-the-flag-ctf/#timing-templates)
+- [Nmap by Code Academy](https://www.codecademy.com/resources/docs/cybersecurity/nmap)
+- [Getting started with nmap by ittavern](https://ittavern.com/getting-started-with-nmap/)
+- [Port Scanning by d00mfist](https://d00mfist.gitbooks.io/ctf/content/port_scanning.html)
+
+### Tools
+
+- [nmap Automator](https://github.com/21y4d/nmapAutomator) - This script is to automate the process of enumeration and scanning with nmap.
