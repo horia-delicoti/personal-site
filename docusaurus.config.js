@@ -95,6 +95,18 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'ctf', // Must match docPluginId in navbar
+        path: 'ctf', // Folder on disk
+        routeBasePath: 'ctf', // URL path
+        sidebarPath: './sidebars.js',
+      },
+    ],
+  ],
+
   // Theme configuration (navbar, code highlighting, etc)
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -109,6 +121,7 @@ const config = {
         items: [
           {to: '/about', label: 'About Me', position: 'right'},
           {to: '/blog', label: 'Blog', position: 'right'},
+          {to: '/ctf/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
