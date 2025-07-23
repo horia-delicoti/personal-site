@@ -17,10 +17,12 @@ These are my notes and resources for participating in CTFs or Hack the Box. I've
 - [CTF Hub](https://www.ctf-hub.io/)
 - [PicoCTF](https://picoctf.com/)
 - [Root Me](https://www.root-me.org/)
+- [Hacker101 CTF](https://www.hacker101.com/)
 
 ### Reference
 
-- [Awesome CTF CheatSheet](https://github.com/uppusaikiran/awesome-ctf-cheatsheet)
+- [Awesome CTF CheatSheet by Saikiran Uppu](https://github.com/uppusaikiran/awesome-ctf-cheatsheet)
+- [Awesome CTF by Amanpreet Singh](https://github.com/apsdehal/awesome-ctf)
 - [CTF 101 Handbook](https://ctf101.org/)
 - [CTF Guide by Xapax](https://xapax.github.io/security/#)
 - [CTF Notes by D00mfist](https://d00mfist.gitbooks.io/ctf/content/)

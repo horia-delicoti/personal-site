@@ -62,20 +62,6 @@ nmap -sV -sC -T4 -min-rate 5000 -p- <IP>
 # -p-: Scan all ports
 ```
 
-:::note
-**[RFC 9293](https://datatracker.ietf.org/doc/html/rfc9293)** states that: “If the connection is **CLOSED** or doesn’t exists, then a **RST** is sent in response.”
-:::
-
-### Ping Sweep
-
-A [ping sweep](https://www.codecademy.com/resources/docs/cybersecurity/nmap/ping-sweep) is a network scanning technique to identify active devices on a network by pinging a range of IP addresses. Compared to other methods, ping sweeps can be harder to detect as it is not as aggressive and can skip regular scan stages, making it more of an advantage. Using "-sn", nmap disables port scsanning and only checks if hosts are up.
-
-```sh
-nmap -sn 192.168.1.0/24
-or
-nmap -sn 192.168.1.1-254
-```
-
 ### Options Summary
 
 Options are case-sensitive. Use `-h` to see the help page. Latest version is available at [nmap.usage.txt](https://svn.nmap.org/nmap/docs/nmap.usage.txt).
@@ -112,9 +98,9 @@ Example:
 nmap -sn -sL -Pn --traceroute --dns-servers 8.8.8.8,1.1.1.1 --system-dns 192.168.1.0/24
 ```
 
-```sh title="SCAN TECHNIQUES"
--sS # TCP SYN scan (stealth scan)
+```sh title="SCAN TYPES"
 -sT # TCP Connect scan (default scan)
+-sS # TCP SYN scan (stealth scan)
 -sA # TCP ACK scan
 -sW # TCP Window scan
 -sM # TCP Maimon scan
@@ -206,6 +192,18 @@ nmap -oN scan_results.txt -oX scan_results.xml -oG scan_results.grepable
 -A # Aggressive Scan. Enables OS detection "-O", version detection "-sV", script scanning "-sC", and traceroute "--traceroute"
 -V # Print version number
 -h # Print this help summary page.
+-d # Increase debugging level (use -dd or more for greater effect)
+-v # Increase verbosity level (use -vv, -vvv or more for greater effect)
+```
+
+### Ping Sweep
+
+A [ping sweep](https://www.codecademy.com/resources/docs/cybersecurity/nmap/ping-sweep) is a network scanning technique to identify active devices on a network by pinging a range of IP addresses. Compared to other methods, ping sweeps can be harder to detect as it is not as aggressive and can skip regular scan stages, making it more of an advantage. Using `-sn`, nmap disables port scanning and only relies on ICMP echo packets (or ARP requests for local networks) to check if hosts are up.
+
+```sh
+nmap -sn 192.168.1.0/24
+or
+nmap -sn 192.168.1.1-254
 ```
 
 ### Port States
@@ -226,23 +224,47 @@ Nmap [categorizes ports](https://nmap.org/book/man-port-scanning-basics.html) in
 Nmap provides [timing templates](https://nmap.org/book/performance-timing-templates.html) to control the speed and stealthiness of scans. The templates range from 0 (paranoid) to 5 (insane). The default is 3 (normal).
 
 ```sh
-nmap -T0 <IP> # Paranoid - Serial, very slow scan
-nmap -T1 <IP> # Sneaky - Slow scan, good for avoiding detection
-nmap -T2 <IP> # Polite - Slows down scan to use less bandwidth and target machine resources
-nmap -T3 <IP> # Normal - Default scan speed
+nmap -T0 <IP> # Paranoid   - Serial, very slow scan
+nmap -T1 <IP> # Sneaky     - Slow scan, good for avoiding detection
+nmap -T2 <IP> # Polite     - Slows down scan to use less bandwidth and target machine resources
+nmap -T3 <IP> # Normal     - Default scan speed
 nmap -T4 <IP> # Aggressive - Faster scan, good for most cases
-nmap -T5 <IP> # Insane - Very fast scan, can overwhelm networks and devices
+nmap -T5 <IP> # Insane     - Very fast scan, can overwhelm networks and devices
 ```
 
 ### Understanding Network Traffic
 
-Changing the [TCP](/docs/networking/tcp.md) connection options in nmap or using browser changes the type of network traffic in [Wireshark](/docs/networking/wireshark.md). Differentiating all network scan traffic:
+A [TCP Connect](/docs/networking/tcp) scan works by performing the three-way handshake (Syn -> Syn-Ack -> Ack) with each target port. Nmap tries to connect to each specified TCP port, and determines whether the port is **OPEN**, **CLOSED**, or **FILTERED** based on the response received.
 
-- **Browser**: When accessing a web page, the browser initiates a full TCP connection to the server. This involves a three-way handshake (SYN, SYN-ACK, ACK) to establish the connection before sending HTTP requests.
+:::tip [Port Scanning Techniques](https://nmap.org/book/man-port-scanning-techniques.html)
+With sudo privileges, users exectues an `-sS` **(SYN scan)**.
+Without sudo privileges, users executes an `-sT` **(TCP Connect scan)**.
+:::
 
-- **`nmap -sS`** (TCP SYN Scan): This scan sends a SYN packet to the target port. If the port is open, the target responds with a SYN-ACK packet. Nmap then sends an RST packet to close the connection, which is known as a half-open scan. This method is stealthier and faster because it does not complete the full TCP handshake.
+:::info
+**[RFC 9293](https://datatracker.ietf.org/doc/html/rfc9293)** states that: "If the connection is **CLOSED** or doesn’t exists, then a **RST** is sent in response."
 
-- **`nmap -sT`** (TCP Connect Scan): This scan establishes a full TCP connection by completing the three-way handshake (SYN, SYN-ACK, ACK) for each target port. This method is more likely to be logged by the target system because it establishes a full connection.
+- If the connection is **OPEN**, then the target server responds with **SYN-ACK** packet, indicating that is ready to establish a connection.
+- If port is **OPEN**, but behind a [firewall](/docs/networking/firewall), the target may not respond at all, or it may respond with an ICMP unreachable message, indicating that the port is filtered.
+
+:::
+
+- **Browser**: When accessing a web page, the browser initiates a full **[TCP](/docs/networking/tcp)** connection to the server. This involves a three-way handshake (SYN, SYN-ACK, ACK) to establish the connection before sending HTTP requests.
+
+- **`nmap -sT`** (**TCP Connect Scan**) - _Default without **`sudo`**_:
+  - Uses the full TCP handshake (SYN -> SYN-ACK -> ACK) for each target port
+  - This method is more easily detected by loggin systems and firewalls
+  - **Slower** than SYN scans because it completes the full handshake
+
+- **`nmap -sS`** (**Stealth Scanning**, TCP **SYN Scan** or "half-open" scan) - Requires **`sudo`**:
+  - Sends a SYN packet and expects a SYN-ACK if the port is open, but **never completes** the TCP handshake (sends RST instead of ACK), known as a "half-open" scan
+  - Considered **stealthier** than `-sT` because it avoids full connection establishment
+  - **Faster** than `-sT` because it does not wait for the full handshake to complete
+  - Requires **`root`** priviliges to send **raw packets**
+  - ⚠️ **Not invisible!** Modern IDS/IPS (eg. [Snort](https://www.snort.org/), [Suricata](https://suricata.io/), [Zeek](https://zeek.org/)) can still detect SYN scans via:
+    - Unfinished handshakes (SYN → SYN-ACK → RST)
+    - High-frequency or patterned SYN probes
+    - "Low and slow" techniques that still show atypical behavior
 
 ```mermaid
 sequenceDiagram
@@ -268,31 +290,35 @@ sequenceDiagram
     Nmap->>Target: RST (after scan)
 ```
 
+_To do: Add Wireshark example of TCP SYN scan and TCP Connect scan._
+
 ### Understanding NSE Scripts
 
-Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse-usage.html) allows users to write scripts to automate various tasks, such as vulnerability detection, service discovery, automate exploits and more.
+Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse.html) allows users to use [NSE scripts](https://nmap.org/nsedoc/scripts/) to automate various tasks, such as vulnerability detection, service discovery, automate exploits and more.
 
 | Category    | Description |
 | ----------- | ----------- |
-| Safe      | Won't affect the target       |
-| Intrusive | Not safe: likely to affect the target |
+| Default   | Run with `-sC`; safe and fast info-gathering |
+| Safe      | Won't affect the target, non-intrusive, safe for production |
+| Intrusive | Not safe: likely to affect the target, may crash services, heavy scanning |
 | Vuln      | Scan for vulnerabilities       |
-| Exploit   | Attempt to exploit a vulnerability |
-| Auth      | Attempt to bypass authentication for running services (e.g. Log into an FTP server anonymously) |
+| Exploit   | Attempt to exploit a vulnerability, known bugs (rare and risky) |
+| Auth      | Attempt to bypass authentication for running services (e.g. Log into an FTP server anonymously, brute force, bypass) |
 | Brute     | Attempt to bruteforce credentials for running services |
-| Discovery | Attempt to query running services for further information about the network (e.g. query an SNMP server) |
+| Discovery | Attempt to query running services for further information about the network (e.g. query an SNMP server, HTTP headers) |
 
 ```sh
+# Runs only scripts from category "vuln" which target an active service, in this case only vulnerability detection scripts against ports 80 and 443 on the target.
 nmap --script=vuln -p 80,443 192.168.100.1
-# Runs all vulnerability detection scripts against ports 80 and 443 on the target
 ```
 
 ### References
 
 - [Official Nmap Guide to Network Discovery](https://nmap.org/book/toc.html)
 - [Nmap Script Engine (NME) Default scripts](https://nmap.org/nsedoc/categories/default.html)
-- [Nmap Cheat Sheet by Stationx](https://www.stationx.net/nmap-cheat-sheet/)
-- [Essential nmap Commands for Pen Testings byt CBT Nuggets](https://www.cbtnuggets.com/blog/certifications/security/7-absolutely-essential-nmap-commands-for-pen-testing)
+- [Try Hack Me - Nmap Room](https://tryhackme.com/room/nmap)
+- [Try Hack Me - Further Nmap Room](https://tryhackme.com/room/furthernmap)
+- [Nmap Cheat Sheet by StationX](https://www.stationx.net/nmap-cheat-sheet/)
 - [Nmap scan techniques explained by Record Future](https://www.recordedfuture.com/threat-intelligence-101/tools-and-techniques/nmap-commands)
 - [Nmap basics for capture the flag CTF by Sagar Chamling](https://sagarchamling.com/notes/nmap-basic-for-capture-the-flag-ctf/#timing-templates)
 - [Nmap by Code Academy](https://www.codecademy.com/resources/docs/cybersecurity/nmap)
