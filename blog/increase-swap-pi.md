@@ -68,7 +68,7 @@ To reload all programs with access to the new memory pool, then restart your dev
 sudo reboot
 ```
 
-## References
+### References
 
 * [Raspberry Pi Swap File][rpi_swap_file]
 

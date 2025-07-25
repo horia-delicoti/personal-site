@@ -16,7 +16,7 @@ I'll walk you through setting up your Raspberry Pi 4 to boot from an USB connect
 * Install Raspberry Pi OS using [Raspberry Pi Imager][rpi_software]
 * Enable SSH
 
-## Getting started
+### Getting started
 
 Copy SSH key:
 
@@ -58,7 +58,7 @@ Select:
 
 Shutdown your Raspberry Pi, remove the SD Card and boot your device
 
-## Card speed test using the dd command
+### Card speed test using the dd command
 
 To find out the SD card write speed performance, we are creating 100MB of free storage space and five blocks of 20MB each
 
@@ -72,7 +72,7 @@ To find out the read speed information of your SD card, issue the following comm
 dd if=./speedTestFile of=/dev/zero bs=20M count=5 oflag=dsync
 ```
 
-## References
+### References
 
 * [How To Boot A Raspberry Pi 4 From An SSD][boot_rpi4_youtube]
 * [How to Test Speed of Raspberry Pi SD Card][card_speed_test]

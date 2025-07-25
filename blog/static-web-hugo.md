@@ -7,12 +7,12 @@ tags: [hugo]
 
 Static websites like online resume or blog sites can be created using HTML, CSS, and JavaScript if you are a front-end developer. However, it can be a bit of a headache for people who are not familiar with these technologies. More importantly, if you are creating a blog site, it’s difficult to maintain uniformity in all its pages. I am going to describe how we can create a static website without the need for such technologies.
 <!-- truncate -->
-## Tools Used
+### Tools Used
 
 * [Hugo][hugo]: A fast and modern static website engine
 * Any text editor of your choice. I prefer [VS Code][vscode]
 
-## Getting Started
+### Getting Started
 
 1. Download and [install Hugo][hugo_installation]. For more details, refer Hugo’s [getting started][hugo_getting_started] guide.
 2. Once Hugo is installed, open a terminal and go to the folder where you want to store the code for your blog or static website
@@ -69,7 +69,7 @@ Static websites like online resume or blog sites can be created using HTML, CSS,
 7. Create a repo on Github and check in the content of the public folder
 8. To publish on `GitHub Pages`, follow [here][host_on_github]. If you want to use a custom domain, please follow [this][custom_domain].
 
-## References
+### References
 
 * [Hugo][hugo]
 * [VS Code][vscode]
