@@ -46,3 +46,8 @@
   border: 0px solid var(--ifm-color-primary-lightest, #eaf1fb);
   display: inline-block;
 }
+
+/* Titles in Blog sections looked really big. Custom change here. */
+.title_f1Hy {
+  font-size: 1.8rem;
+}

@@ -10,7 +10,7 @@ This is a walkthrough for the TryHackMe room [Pickle Rick](https://tryhackme.com
 > Listen Morty... I need your help, I've turned myself into a pickle again and this time I can't change back!
 <!-- truncate -->
 
-## Information Gathering
+### Information Gathering
 
 Start the machine and save IP address for the room.
 
@@ -193,7 +193,7 @@ We finally have all the ingredients Rick needs to make his serum. We transformed
 
 <img src="/img/tryhackme/pickle-rick/final.jpeg" alt="Web Final" width="300"/>
 
-## Conclusion
+### Conclusion
 
 This was a fun CTF challenge that required us to gather information about the target, exploit the web service to gain access to the admin panel,
 and then use the command line interface to find the ingredients Rick needs to make his serum. We were able to turn Rick back into a human from a pickle!
