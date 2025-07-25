@@ -245,7 +245,7 @@ Without sudo privileges, users executes an `-sT` **(TCP Connect scan)**.
 **[RFC 9293](https://datatracker.ietf.org/doc/html/rfc9293)** states that: "If the connection is **CLOSED** or doesn’t exists, then a **RST** is sent in response."
 
 - If the connection is **OPEN**, then the target server responds with **SYN-ACK** packet, indicating that is ready to establish a connection.
-- If port is **OPEN**, but behind a [firewall](/docs/networking/firewall), the target may not respond at all, or it may respond with an ICMP unreachable message, indicating that the port is filtered.
+- If port is **OPEN**, but behind a [firewall](/docs/networking/firewall.md), the target may not respond at all, or it may respond with an ICMP unreachable message, indicating that the port is filtered.
 
 :::
 
