@@ -39,6 +39,7 @@ These are my notes and resources for participating in CTFs or Hack the Box. I've
 - [Learn Binary Exploitation](https://github.com/Adamkadaban/LearnPwn)
 - [CTF Cheat Sheet by Dvd848](https://dvd848.github.io/CTFs/CheatSheet.html)
 - [Cryptography for CTF](https://medium.com/@anandrishav2228/cryptography-great-cheat-sheet-for-ctfs-d2ada754b319)
+- [TryHackMe and HackTheBox by JesusGavancho](https://github.com/jesusgavancho/TryHackMe_and_HackTheBox)
 -
 - [cheat sheet](https://infosecwriteups.com/use-these-cheatsheets-to-increase-your-ctf-speed-ca12a01d396a)
 
@@ -46,3 +47,4 @@ These are my notes and resources for participating in CTFs or Hack the Box. I've
 
 - [Hack The Box Walkthroughs @IppSec](https://www.youtube.com/@ippsec)
 - [Over The Wire Walkthroughs @TwinSecurity](https://www.youtube.com/@twinsecurity5023)
+- [Official TryHackMe Walkthroughs by @DarkSec](https://www.youtube.com/@DarkSec)
