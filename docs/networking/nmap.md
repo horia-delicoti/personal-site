@@ -245,7 +245,7 @@ Without sudo privileges, users executes an `-sT` **(TCP Connect scan)**.
 **[RFC 9293](https://datatracker.ietf.org/doc/html/rfc9293)** states that: "If the connection is **CLOSED** or doesn’t exists, then a **RST** is sent in response."
 
 - If the connection is **OPEN**, then the target server responds with **SYN-ACK** packet, indicating that is ready to establish a connection.
-- If port is **OPEN**, but behind a [firewall](/docs/networking/firewall.md), the target may not respond at all, or it may respond with an ICMP unreachable message, indicating that the port is filtered.
+- If port is **OPEN**, but behind a [firewall](/docs/networking/firewall), the target may not respond at all, or it may respond with an ICMP unreachable message, indicating that the port is filtered.
 
 :::
 
@@ -292,6 +292,8 @@ sequenceDiagram
 
 _To do: Add Wireshark example of TCP SYN scan and TCP Connect scan._
 
+### Advanced Scanning Techniques
+
 ### Understanding NSE Scripts
 
 Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse.html) allows users to use [NSE scripts](https://nmap.org/nsedoc/scripts/) to automate various tasks, such as vulnerability detection, service discovery, automate exploits and more.
@@ -324,6 +326,7 @@ nmap --script=vuln -p 80,443 192.168.100.1
 - [Nmap by Code Academy](https://www.codecademy.com/resources/docs/cybersecurity/nmap)
 - [Getting started with nmap by ittavern](https://ittavern.com/getting-started-with-nmap/)
 - [Port Scanning by d00mfist](https://d00mfist.gitbooks.io/ctf/content/port_scanning.html)
+- [TryHackMe: Nmap Advanced Port Scans](https://tryhackme.com/room/nmap03)
 
 ### Tools
 

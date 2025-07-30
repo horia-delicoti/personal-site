@@ -5,7 +5,7 @@ date: 2025-07-25
 tags: [tryhackme]
 ---
 
-This is a walkthrough for the TryHackMe room [Network Security Challenge Room](https://tryhackme.com/room/netsecchallenge). This challenge is designed to use [nmap](/docs/networking/nmap), [telnet](/docs/networking/telnet), [ftp](/docs/networking/ftp) and [hydra](/docs/security/tools/hydra) to find flags and learn about network security.
+This is a walkthrough for the TryHackMe room [Network Security Challenge Room](https://tryhackme.com/room/netsecchallenge). This challenge is designed to use [nmap](/docs/networking/nmap.md), [telnet](/docs/networking/telnet.md), [ftp](/docs/networking/ftp.md) and [hydra](/docs/security/tools/hydra.md) to find flags and learn about network security.
 <!-- truncate -->
 
 ### Information Gathering
