@@ -6,9 +6,7 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 
 [Parents](https://www.parents.com/parenting/) is a good inspiration and guidance website.
 
----
-
-## 🧠 Parenting Styles & Child Psychology
+### Parenting Styles & Child Psychology
 
 - **[The Four Parenting Styles](https://www.verywellfamily.com/types-of-parenting-styles-1095045)**
 - [40 Years of Stanford Research: Delayed Gratification](https://jamesclear.com/delayed-gratification)
@@ -20,9 +18,7 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 - [What are parenting one liners](https://www.parents.com/what-are-parenting-one-liners-8718764)
 - [Turn your words into gold](https://www.loveandlogic.com/pages/turn-your-words-into-gold)
 
----
-
-## 🏆 Raising High-Achieving & Resilient Kids
+### Raising High-Achieving & Resilient Kids
 
 - [Want To Raise A High-Achieving Kid? Talk To Your Toddler Like This](https://www.fatherly.com/health/raise-high-achieving-test-taker)
 - [Raise high achieving test taker](https://www.fatherly.com/health/raise-high-achieving-test-taker)
@@ -30,25 +26,23 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 - [Harvard psychologist to parents: Do these 7 things if you want to raise kids with flexible, resilient brains](https://www.cnbc.com/2020/12/08/harvard-psychologist-rules-for-raising-intelligent-kids-with-resilient-brains.html)
 - [Authoritative Parenting Style](https://parentingscience.com/authoritative-parenting-style/)
 
----
-
-## 💤 Sleep
+### Sleep
 
 - [Cara Sleep Training](https://takingcarababies.com/sleep-training/)
 - [Child sleep age by age guide](https://www.parents.com/child-sleep-an-age-by-age-guide-8414054)
 
----
-
-## 💻 Programming for Kids
+### Programming for Kids
 
 - [Awesome Programming for Kids](https://github.com/HollyAdele/awesome-programming-for-kids)
 - [How do I start my child coding](https://www.raspberrypi.org/blog/how-do-i-start-my-child-coding/)
 - [Give your students structure as they learn coding](https://www.raspberrypi.org/blog/how-to-give-your-students-structure-as-they-learn-programming-skills/)
 - [Learn to code by creating your own game](https://www.raspberrypi.org/blog/from-player-to-maker-learn-to-code-by-creating-your-own-game/)
 
----
+### Devices
 
-## 📝 Notes
+- [Yoto Play](https://uk.yotoplay.com/) - device for kids that plays audiobooks, music, and radio without a screen.
+
+### Notes
 
 **Key Insights from "How To Raise a Genius: Lessons from a 20-Year Self-Experiment" ([genius.pdf](https://slatestarcodex.com/Stuff/genius.pdf)):**
 
@@ -83,5 +77,3 @@ A curated collection of resources, articles, and tools for modern parenting, chi
   Create a home environment rich in books, resources, and stimulating conversation. Limit passive entertainment and encourage active engagement.
 
 For more detail, see the full [How To Raise a Genius PDF](https://slatestarcodex.com/Stuff/genius.pdf).
-
----
