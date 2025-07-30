@@ -1,11 +1,11 @@
 ---
-title: "Pickle Rick: Try Hack Me Walkthrough"
+title: "Pickle Rick: THM Walkthrough"
 subtitle: "A Rick and Morty CTF. Help turn Rick back into a human!"
 date: 2025-06-27
 tags: [tryhackme]
 ---
 
-This is a walkthrough for the TryHackMe room [Pickle Rick](https://tryhackme.com/room/picklerick). Let's help Rick find the ingredients he needs to make his serum and turn back into a human.
+This is a walkthrough for the TryHackMe room [Pickle Rick Room](https://tryhackme.com/room/picklerick). Let's help Rick find the ingredients he needs to make his serum and turn back into a human.
 
 > Listen Morty... I need your help, I've turned myself into a pickle again and this time I can't change back!
 <!-- truncate -->
@@ -26,14 +26,13 @@ ping $IP
 64 bytes from 10.10.94.57: icmp_seq=1 ttl=63 time=18.233 ms
 ```
 
-Let's use [nmap](https://nmap.org/) to scan the target and gather some information about the services running on it.
+Let's use [nmap](/docs/networking/nmap) to scan the target and gather some information about the services running on it.
 
 ```sh
 nmap -sC -sV -oN nmap/initial $IP
-#     |   |  |-> # Output scan results to nmap/initial
+#     |   |  |-> Output scan results to nmap/initial
 #     |   |-> Enable service version detection
 #     |-> Enable default scripts
-
 Nmap scan report for 10.10.94.57
 Host is up (0.021s latency).
 Not shown: 998 closed tcp ports (reset)
@@ -49,7 +48,7 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-The Nmap scan reveled two open ports: [22 (SSH)](https://www.ssh.com/academy/ssh/port) and [80 (HTTP)](https://sslinsights.com/what-is-port-80/). The HTTP service is running Apache [httpd 2.4.41](https://httpd.apache.org/) on [Ubuntu](https://ubuntu.com/).
+The Nmap scan revealed two open ports: [22 (SSH)](https://www.ssh.com/academy/ssh/port) and [80 (HTTP)](https://sslinsights.com/what-is-port-80/). The HTTP service is running Apache [httpd 2.4.41](https://httpd.apache.org/) on [Ubuntu](https://ubuntu.com/).
 Let's check the web service in http://10.10.94.57 by opening a browser and navigating to the target IP address.
 
 ![Web Page Output](/img/tryhackme/pickle-rick/web.png)
