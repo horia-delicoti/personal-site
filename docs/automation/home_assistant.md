@@ -63,14 +63,11 @@ This is my personal setup for [Home Assistant](https://www.home-assistant.io/), 
 
 ### Devices
 
-:::note
+- [Philip Hue Strip Light](https://www.philips-hue.com/en-gb/products/smart-light-strips) - Smart lighting system.
 
-Philips Hue can be integrated with Home Assistant via Zigbee.
+> Philips Hue can be integrated with Home Assistant via Zigbee.
 To reset Hue Strip Light, turn it on for 5 second and off for 5 second x 5 times until it flashes.
 
-:::
-
-- [Philip Hue Strip Light](https://www.philips-hue.com/en-gb/products/smart-light-strips) - Smart lighting system.
 - [Aqara Temperature and Humidity Sensor](https://www.aqara.com/eu/product/temperature-humidity-sensor/)
 
 ### Youtube Channels
