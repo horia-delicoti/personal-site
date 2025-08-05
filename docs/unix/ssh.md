@@ -4,18 +4,7 @@ title: SSH
 
 [SSH (Secure Shell)](https://www.ssh.com/academy/ssh) is a cryptographic network protocol for securely accessing and managing remote systems over an unsecured network. SSH provides encrypted communication, secure file transfer, and tunneling capabilities, making it a fundamental tool for system administrators and developers.
 
----
-
-## 🌟 Key Concepts
-
-- **Authentication:** SSH supports password-based and key-based authentication.
-- **Encryption:** All data sent over SSH is encrypted for confidentiality.
-- **Port Forwarding:** SSH can tunnel network connections securely.
-- **SCP/SFTP:** Secure file transfer protocols built on SSH.
-
----
-
-## 🛠️ Common SSH Commands
+### Common SSH Commands
 
 ```sh
 ssh user@host                   # Connect to a remote host
@@ -27,9 +16,7 @@ ssh -R 2222:localhost:22 user@host  # Remote port forwarding
 ssh-copy-id user@host           # Copy your public key to the server for key-based login
 ```
 
----
-
-## 🔑 SSH Key Management
+### SSH Key Management
 
 ```sh
 ssh-keygen                      # Generate a new SSH key pair
@@ -38,9 +25,7 @@ ssh-add ~/.ssh/id_rsa           # Add private key to SSH agent
 eval "$(ssh-agent -s)"          # Start the SSH agent
 ```
 
----
-
-## 📦 Secure File Transfer
+### Secure File Transfer
 
 ```sh
 scp file.txt user@host:/path/   # Copy file to remote host
@@ -49,9 +34,7 @@ scp -r dir/ user@host:/path/    # Copy directory recursively
 sftp user@host                  # Start interactive SFTP session
 ```
 
----
-
-## ⚙️ SSH Configuration
+### ️ SSH Configuration
 
 **Config file:** `~/.ssh/config`
 
@@ -64,9 +47,7 @@ Host myserver
     ForwardAgent yes
 ```
 
----
-
-## 🛡️ Security Tips
+### Security Tips
 
 - Use SSH keys instead of passwords for authentication.
 - Disable root login via SSH (`PermitRootLogin no` in `/etc/ssh/sshd_config`).
@@ -74,21 +55,15 @@ Host myserver
 - Use `Fail2Ban` or similar tools to block brute-force attempts.
 - Regularly update OpenSSH and your system.
 
----
-
-## 📚 Useful Links
+### Useful Links
 
 - [SSH: The Secure Shell (O’Reilly)](https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch01_01.htm)
 - [SSH Academy](https://www.ssh.com/academy)
 - [OpenSSH Manual](https://man.openbsd.org/ssh)
 - [SSH Config Examples](https://linux.die.net/man/5/ssh_config)
 
----
-
-## 📝 Notes
+### Notes
 
 - SSH is available by default on most Unix-like systems.
 - Public keys are stored in `~/.ssh/authorized_keys` on the server.
 - Use `ssh -v` for verbose/debug output if you have connection issues.
-
----
