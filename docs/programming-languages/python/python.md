@@ -2,22 +2,14 @@
 title: Python
 ---
 
-[Python](https://www.python.org/) is a powerful, high-level, open-source programming language known for its readability, versatility, and large ecosystem. It is widely used in web development, data science, automation, scripting, machine learning, and more.
+### Documentation & Cheatsheets
 
----
-
-## 📚 Documentation & Cheatsheets
-
-- [Python Official Docs](https://docs.python.org/3/)
-- [Python Cheatsheet 1](/files/python3-cheat-sheet.pdf)
-- [Python Cheatsheet 2](https://www.pythoncheatsheet.org/)
-- [Python Cheatsheet 3](https://gto76.github.io/python-cheatsheet/)
+- [Python](https://www.python.org/)
+- [Cheatsheet 1](/files/python3-cheat-sheet.pdf), [Cheatsheet 2](https://www.pythoncheatsheet.org/), [Cheatsheet 3](https://gto76.github.io/python-cheatsheet/)
 - [Learn Python in Y Minutes](https://learnxinyminutes.com/docs/python/)
 - [Underestand Python through snippets](https://github.com/satwikkansal/wtfpython)
 
----
-
-## 🛠️ Commands and Path
+### Commands and Path
 
 ```sh
 `/usr/local/bin/python3` on macOS (Homebrew)
@@ -40,9 +32,7 @@ source venv/bin/activate        # Activate virtualenv (Linux/macOS)
 deactivate                      # Deactivate virtualenv
 ```
 
----
-
-## 📦 Packages & Tools
+### Packages & Tools
 
 - [PyPI](https://pypi.org/) - Python Package Index
 - [Pip](https://pip.pypa.io/en/stable/) - Package installer
@@ -51,23 +41,20 @@ deactivate                      # Deactivate virtualenv
 - [Ruff](https://github.com/astral-sh/ruff), [Pylint](https://pypi.org/project/pylint/) - Code analysis/formatting
 - [Pyperf](https://github.com/psf/pyperf) - Toolkit to run Python benchmarks
 
----
+### Learning & Practice
 
-## 🧑‍💻 Learning & Practice
-
-- [GeekForGeek: Python Tutorial](https://www.geeksforgeeks.org/python/python-programming-language-tutorial/)
 - [Python Roadmap](https://roadmap.sh/python)
-- [Hack in science](https://www.hackinscience.org/exercises/)
+- [GeekForGeek: Python Tutorial](https://www.geeksforgeeks.org/python/python-programming-language-tutorial/)
 - [LeetCode](https://leetcode.com/)
+- [NeetCode](https://neetcode.io/practice)
+- [Hack in science](https://www.hackinscience.org/exercises/)
 - [HackerRank](https://www.hackerrank.com/dashboard)
 - [Learn and Master Python in a Month](https://medium.com/@jhankar.mahbub/learn-and-master-python-in-a-month-b1acc94d5f32)
 - [Geek for Geeks - DSA](https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=shm)
 - [Python Certification](https://www.guru99.com/python-programming-certification.html#3)
 - [Real Python](https://realpython.com/)
 
----
-
-## 📖 Books
+### Books
 
 - [Free Python books](https://github.com/pamoroso/free-python-books)
 - [Best books for learning Python](https://realpython.com/best-python-books/#best-books-for-learning-python)
@@ -78,18 +65,14 @@ deactivate                      # Deactivate virtualenv
 - [Inside The Python Virtual Machine](https://leanpub.com/insidethepythonvirtualmachine/read)
 - [Problem Solving with Algorithms and Data Structures using Python](http://www.openbookproject.net/books/pythonds/)
 
----
-
-## 🎓 Courses
+### Courses
 
 - [100 Days Of Code in Python Course](https://training.talkpython.fm/courses/explore_100days_in_python/100-days-of-code-in-python)
 - [100 Days of DSA in Python Code](https://www.linkedin.com/pulse/100-days-dsa-python-code-comprehensive-guide-kumar-vishwakarma-bvnsc/)
 - [Python and Django Full Stack Web Developer Bootcamp](https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/)
 - [The Complete Python 3 Course: Beginner to Advanced!](https://www.udemy.com/course/python-complete/)
 
----
-
-## 💡 Projects & Ideas
+### Projects & Ideas
 
 - [57 Fun (and Unique) Python Project Ideas](https://www.dataquest.io/blog/python-projects-for-beginners/)
 - [Python projects you can build](https://realpython.com/tutorials/projects/)
@@ -98,16 +81,12 @@ deactivate                      # Deactivate virtualenv
 - [Python Project Beginner](https://github.com/topics/python-project-beginner)
 - [Top 30 github python projects](https://towardsdatascience.com/top-30-github-python-projects-at-the-beginning-of-2022-86b1e3dad1a)
 
----
+### Interview Prep
 
-## 📝 Interview Prep
+- [Cracking the Coding Interview](http://repo.darmajaya.ac.id/4188/1/Cracking%20the%20Coding%20Interview_%20189%20Programming%20Questions%20and%20Solutions%20%28%20PDFDrive%20%29.pdf)
+- [Elements of Programming Interview in Python](https://elementsofprogramminginterviews.com/sample/epilight_python_new.pdf)
 
-- Cracking the Coding Interview
-- Elements of Programming Interview in Python
-
----
-
-## 🧰 Useful Tools
+### Useful Tools
 
 - [Memray](https://github.com/bloomberg/memray) - Python memory profiler
 - [Awesome Python](https://github.com/vinta/awesome-python)
@@ -116,12 +95,6 @@ deactivate                      # Deactivate virtualenv
 - [Official Style Guide for Python (PEP8)](https://peps.python.org/pep-0008/)
 - [30 Python Language Features and Tricks](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 
----
+### Notes
 
-## 📝 Notes
-
-- Python is cross-platform and runs on Windows, macOS, and Linux.
 - Use virtual environments for each project to avoid dependency conflicts.
-- The Python community is large and supportive use forums, Stack Overflow, and GitHub for help.
-
----
