@@ -7,6 +7,16 @@ sidebar_position: 1
 
 These are my notes and resources for participating in CTFs or Hack the Box. I've also included people whose work has inspired me.
 
+### Contents
+
+- [System Hacking](/ctf/system-hacking)
+- [Web Hacking](/ctf/web-hacking)
+- [File Hacking](/ctf/file-hacking)
+- [Cryptography](/ctf/cryptography)
+- [Forensics](/ctf/forensics)
+- [Password Cracking](/ctf/password-cracking)
+- [Privilege Escalation](/ctf/privilige-escalation)
+
 ### CTF Platforms
 
 - [TryHackMe](https://tryhackme.com/)
