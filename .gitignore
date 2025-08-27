@@ -1,3 +1,6 @@
+# Scripts
+*.sh
+
 # Dependencies
 /node_modules
 
