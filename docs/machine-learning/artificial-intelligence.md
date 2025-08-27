@@ -20,6 +20,8 @@ title: Artificial Intelligence
 
 ### AI Code Agents & Editors
 
+- [PipesHub](https://pipeshub.com/) ([GitHub](https://github.com/pipeshub-ai/pipeshub-ai)) — AI code agents and editors
+
 - **Code Editors with AI:**
   - [Cursor](https://www.cursor.com/en)
   - [Windsurf](https://windsurf.com/)
