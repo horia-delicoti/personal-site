@@ -11,7 +11,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     // Use Docusaurus Layout for SEO, meta tags, and consistent site structure
-    <Layout title="Portfolio" description="Horia Delicoti's personal website">
+    <Layout title="Home" description="Horia Delicoti's personal website">
       <main>
         <section className={styles.heroSection}>
           {/* Personal greeting and branding for immediate visitor engagement */}
