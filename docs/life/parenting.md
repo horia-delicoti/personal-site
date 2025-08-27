@@ -37,6 +37,7 @@ A curated collection of resources, articles, and tools for modern parenting, chi
 - [How do I start my child coding](https://www.raspberrypi.org/blog/how-do-i-start-my-child-coding/)
 - [Give your students structure as they learn coding](https://www.raspberrypi.org/blog/how-to-give-your-students-structure-as-they-learn-programming-skills/)
 - [Learn to code by creating your own game](https://www.raspberrypi.org/blog/from-player-to-maker-learn-to-code-by-creating-your-own-game/)
+- [CrunchLabs: Where kids & adults learn to Think like Engineers](https://www.crunchlabs.com/)
 
 ### Devices
 
