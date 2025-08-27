@@ -6,7 +6,7 @@ This is my personal setup for [Home Assistant](https://www.home-assistant.io/), 
 
 ### Hardware
 
-- [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) with 4GB is powerful for running Home Assistant.
+- [Raspberry Pi 5 (4GB)](https://www.raspberrypi.com/products/raspberry-pi-5/) is powerful for running Home Assistant.
 - [Raspberry Pi Active Cooler](https://www.raspberrypi.com/products/active-cooler/) to prevent overheating.
 - [Raspberry Pi Power Supply 27W USB-C](https://www.raspberrypi.com/products/power-supply/) for stable power and to power additional USB devices.
 - [870 EVO SATA 2.5" SSD 250GB](https://www.samsung.com/uk/memory-storage/sata-ssd/870-evo-250gb-sata-3-2-5-ssd-mz-77e250b-eu/) with [SSD to USB 3.0 Cable](https://thepihut.com/products/ssd-to-usb-3-0-cable-for-raspberry-pi) or
