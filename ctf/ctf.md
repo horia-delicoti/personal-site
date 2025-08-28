@@ -7,27 +7,23 @@ sidebar_position: 1
 
 These are my notes and resources for participating in CTFs or Hack the Box. I've also included people whose work has inspired me.
 
-### Contents
-
-- [System Hacking](/ctf/system-hacking)
-- [Web Hacking](/ctf/web-hacking)
-- [File Hacking](/ctf/file-hacking)
-- [Cryptography](/ctf/cryptography)
-- [Forensics](/ctf/forensics)
-- [Password Cracking](/ctf/password-cracking)
-- [Privilege Escalation](/ctf/privilige-escalation)
-
 ### CTF Platforms
 
-- [TryHackMe](https://tryhackme.com/)
-- [Hack The Box](https://www.hackthebox.com/)
-- [Over the Wire](https://overthewire.org/wargames/)
-- [Hack This Site](https://www.hackthissite.org/)
-- [CTF Time](https://ctftime.org/)
-- [CTF Hub](https://www.ctf-hub.io/)
-- [PicoCTF](https://picoctf.com/)
-- [Root Me](https://www.root-me.org/)
-- [Hacker101 CTF](https://www.hacker101.com/)
+- [TryHackMe](https://tryhackme.com/) - Beginner friendly CTF platform with guided learning paths.
+- [Hack The Box](https://www.hackthebox.com/) - Advanced CTF platform with a wide range of challenges.
+- [Over the Wire](https://overthewire.org/wargames/) - Beginner to advanced CTF platform with a focus on Linux and networking.
+- [Hack This Site](https://www.hackthissite.org/) - Beginner to advanced CTF platform with a focus on web hacking.
+- [CTF Time](https://ctftime.org/) - A calendar of upcoming CTF events and a ranking of CTF teams.
+- [CTF Hub](https://www.ctf-hub.io/) - A collection of CTF challenges and write-ups.
+- [PicoCTF](https://picoctf.com/) - Beginner friendly CTF platform with a focus on high school students.
+- [Root Me](https://www.root-me.org/) - A platform with a wide range of challenges in various categories.
+- [Hacker101 CTF](https://www.hacker101.com/) - A CTF platform by HackerOne with a focus on web hacking.
+
+### YouTube Channels
+
+- [Hack The Box Walkthroughs @IppSec](https://www.youtube.com/@ippsec) - Great channel with walkthroughs for Hack The Box machines.
+- [Over The Wire Walkthroughs @TwinSecurity](https://www.youtube.com/@twinsecurity5023) - Great channel with walkthroughs for Over The Wire wargames.
+- [Official TryHackMe Walkthroughs by @DarkSec](https://www.youtube.com/@DarkSec) - Official TryHackMe channel with walkthroughs for their rooms.
 
 ### Reference
 
@@ -52,9 +48,3 @@ These are my notes and resources for participating in CTFs or Hack the Box. I've
 - [TryHackMe and HackTheBox by JesusGavancho](https://github.com/jesusgavancho/TryHackMe_and_HackTheBox)
 -
 - [cheat sheet](https://infosecwriteups.com/use-these-cheatsheets-to-increase-your-ctf-speed-ca12a01d396a)
-
-### YouTube Channels
-
-- [Hack The Box Walkthroughs @IppSec](https://www.youtube.com/@ippsec)
-- [Over The Wire Walkthroughs @TwinSecurity](https://www.youtube.com/@twinsecurity5023)
-- [Official TryHackMe Walkthroughs by @DarkSec](https://www.youtube.com/@DarkSec)
