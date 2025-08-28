@@ -3,7 +3,7 @@ title: My Knowledge Wiki 🌱
 sidebar_position: 1
 ---
 
-Welcome to my personal knowledge wiki. A digital garden where I collect, organize, and share everything I learn about technology, DevOps, programming, and beyond. This wiki is built with [Docusaurus](https://docusaurus.io/) and lives on [GitHub](https://github.com/horia-delicoti/my-website).
+Welcome to my personal knowledge wiki. A digital garden where I collect, organize, and share everything I learn about technology, DevOps, programming, and beyond. This wiki is built with [Docusaurus](https://docusaurus.io/) and lives on [GitHub](https://github.com/horia-delicoti/personal-site).
 
 Check out the [Getting Started](#getting-started) section below to understand how navigate this wiki.
 
@@ -19,12 +19,12 @@ Check out the [Getting Started](#getting-started) section below to understand ho
 
 ## How it works
 
-All content is open source and versioned on [GitHub](https://github.com/horia-delicoti/my-website).  
+All content is open source and versioned on [GitHub](https://github.com/horia-delicoti/personal-site).  
 Whenever I update or add a page, the site rebuilds and publishes automatically.
 
 ## Contributing & Feedback
 
-If you spot a mistake or want to suggest an improvement, feel free to [open an issue](https://github.com/horia-delicoti/my-website/issues) or submit a pull request.  
+If you spot a mistake or want to suggest an improvement, feel free to [open an issue](https://github.com/horia-delicoti/personal-site/issues) or submit a pull request.  
 I welcome feedback and contributions from anyone interested in learning and sharing knowledge.
 
 ---
