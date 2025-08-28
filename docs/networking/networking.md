@@ -2,54 +2,49 @@
 title: Networking
 ---
 
-Networking is the practice of connecting computers and other devices to share resources, exchange data, and enable communication. It forms the backbone of the internet, local area networks (LANs), and enterprise systems, allowing devices to interact efficiently and securely.
+### OSI Model
 
----
+The OSI Model breaks down network communication into seven layers. These layers are useful for identifying network issues and understanding how data travels through a network. Each layer serves a specific function, and they work together to enable communication between devices.
 
-## 🧩 Key Concepts
+- [What is the OSI Model?](https://www.cloudflare.com/learning/network-layer/what-is-the-osi-model/)
 
-- **Network Types:**  
-  - **LAN (Local Area Network):** Connects devices within a limited area (e.g., home, office).
-  - **WAN (Wide Area Network):** Connects devices over large geographic areas (e.g., the internet).
-  - **MAN (Metropolitan Area Network):** Covers a city or campus.
-- **Protocols:**  
-  - **TCP/IP:** Foundation of internet communication.
-  - **Ethernet:** Standard for wired LANs.
-  - **Wi-Fi:** Wireless networking standard.
-  - **HTTP/HTTPS, FTP, DNS, DHCP:** Application and network layer protocols.
-- **Devices:**  
-  - **Router:** Directs data between networks.
-  - **Switch:** Connects devices within a LAN.
-  - **Hub:** Basic device for connecting multiple computers.
-  - **Firewall:** Protects networks from unauthorized access.
-- **IP Addressing:** Unique identifiers for devices on a network (IPv4, IPv6).
-- **Subnetting:** Dividing a network into smaller segments for efficiency and security.
+| Layer Name  | Main Function | Example Protocols and Standards |
+| ----------- | ------------- | ------------------------------- |
+| **7. Application Layer** | Human-computer interaction layer, where applications can access the network services | HTTP, FTP, SMTP, DNS, IMAP |
+| **6. Presentation Layer** | Ensures that data is in a usable format and is where data encryption occurs | JPEG, PNG, GIF, SSL/TLS, Unicode |
+| **5. Session Layer** | Maintains connections and is responsible for controlling ports and sessions | NFS, RPC, PPTP |
+| **4. Transport Layer** | Transmits data using transmissions protocols | TCP, UDP |
+| **3. Network Layer** | Decides which physical path the data will take | IP, ICMP, IPSec, ARP |
+| **2. Data Link Layer** | Defines the format of data on the network | Ethernet (802.3), WiFi (802.11) |
+| **1. Physical Layer** | Transmits raw bit streams over a physical medium | Ethernet cables, fiber optics, radio waves (wireless signals) |
 
----
+```sh title="Ping a host to check connectivity"
+ping <HOST_IP>
+ping -c 5 -i 0.2 <HOST_IP> # Ping with 5 packets, 0.2s interval
+ping -s 1200 -M do -t 64 8.8.8.8 # Ping with 1200 bytes, don't fragment, TTL 64
+```
 
-## 🛠️ Common Networking Tools
+```sh title="Traceroute to a host to find the path taken by packets"
+traceroute <HOST_IP>
+traceroute -I <HOST_IP> # Use ICMP instead of UDP
+traceroute -T <HOST_IP> # Use TCP SYN packets
+traceroute -p 80 <HOST_IP> # Specify port
+```
 
-- **Ping:** Test connectivity between devices.
-- **Traceroute:** Track the path data takes to a destination.
-- **nslookup/dig:** Query DNS records.
-- **Wireshark:** Network protocol analyzer.
-- **nmap:** Network scanning and security auditing.
+```sh title="Whois lookup for domain information"
+whois <DOMAIN>
+```
 
----
+```sh title="DNS lookup for domain name resolution"
+dig <DOMAIN>
+dig +short <DOMAIN> # Short output
+dig <DOMAIN> @8.8.8.8 # Use specific DNS server
+nslookup <DOMAIN> # Alternative DNS lookup
+```
 
-## 📚 Useful Links
+### Useful Links
 
+- [OSI Model Explained](https://www.cloudflare.com/learning/network-layer/what-is-the-osi-model/)
+- [List of TCP and UDP port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
 - [Complete guide to the Ethernet Protocol](https://www.freecodecamp.org/news/the-complete-guide-to-the-ethernet-protocol/)
-- [How the Internet Works (Cloudflare)](https://www.cloudflare.com/learning/network-layer/how-does-the-internet-work/)
-- [Networking Fundamentals (Cisco)](https://www.cisco.com/c/en/us/products/switches/what-is-network-switching.html)
-- [Wireshark User Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
-
----
-
-## 📝 Notes
-
-- Networking is essential for modern computing, enabling everything from web browsing to cloud computing.
-- Security is a critical aspect—always use strong passwords, firewalls, and encryption where possible.
-- Understanding networking basics is valuable for IT, software development, and cybersecurity careers.
-
----
+- [TryHackMe: Networkig Concepts](https://tryhackme.com/room/networkingconcepts)

@@ -87,3 +87,14 @@ Wireshark can capture traffic on any device/interface where it is installed and 
 - Always have permission to capture network traffic, especially on networks you do not own.
 
 ---
+
+## 🐾 Alternative: Using tcpdum
+Start tcpdump to capture ICMP packets on a specific interface (e.g., `en0`) and ping from another device
+
+```sh
+sudo tcpdump -i en0 icmp
+```
+
+### Links
+
+- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
