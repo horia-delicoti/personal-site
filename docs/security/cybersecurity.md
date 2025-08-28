@@ -12,7 +12,6 @@
 - [Books #2](https://github.com/zealraj/Cybersecurity-Books?tab=readme-ov-file)
 - [Books #3](https://github.com/InspectorDidi/Hacking-Books)
 - [The book of secret knowledge](https://github.com/trimstray/the-book-of-secret-knowledge) - A collection of cheatsheets, hacks, one-liners, cli/web tools
-- [Github: awesome-hacking](https://github.com/Hack-with-Github/Awesome-Hacking)
 
 ## Search Engines
 
@@ -65,7 +64,6 @@
 
 ## Security Tools
 
-- [Amazing Security Tools](https://github.com/eugenekolo/sec-tools)
 - [Some setup scripts for security research tools](https://github.com/zardus/ctf-tools)
 - [Qrencode](https://linux.die.net/man/1/qrencode) - Encode input data in a QR Code and save as a PNG image
 - [REMnux](https://remnux.org/) - Linux toolkit for Malware Analysis
@@ -91,15 +89,22 @@
 
 ## [OSINT](https://www.recordedfuture.com/blog/open-source-intelligence-definition)
 
+- [OSINT Framework](https://osintframework.com/) - A collection of OSINT tools categorized by type
 - [Open Source Intelligence (OSINT)](https://www.imperva.com/learn/application-security/open-source-intelligence-osint/#:~:text=Maltego%20is%20part%20of%20the,information%20they%20want%20to%20collect.)
 - [Github Awesome OSINT](https://github.com/jivoi/awesome-osint)
 - [15 top open-source intelligence tools](https://www.csoonline.com/article/567859/what-is-osint-top-open-source-intelligence-tools.html)
 
 ## Certificates
 
+- [Practical Network Penetration Tester(PNPT)](https://certifications.tcm-sec.com/pnpt/)
+- [CompTIA Security+](https://www.comptia.org/en/certifications/security/)
 - [Google Cybersecurity Professional Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity)
 - [OSCP & PEN-200 Prep](https://www.offsec.com/resources/guides/ebook-oscp-prep-pen200/)
 - [Passed SEC+ certificate](https://www.reddit.com/r/CompTIA/comments/ii1yhn/passed_sec_was_so_ez_i_am_beyond_shocked_here_is/)
+
+## University Courses
+
+- [BSc (Hons) Cyber Security](https://www.uwl.ac.uk/course/undergraduate/cyber-security?start=1314&option=33)
 
 ## Scams
 
@@ -123,8 +128,11 @@
 ## Links
 
 - [Github topics: cyber-security](https://github.com/topics/cyber-security)
+- [Github: awesome-hacking](https://github.com/Hack-with-Github/Awesome-Hacking)
 - [Github topics: security](https://github.com/topics/security)
 - [Resources](https://github.com/th3cyb3rhub/resources)
+- [Code Academy Cybersecurity](https://www.codecademy.com/resources/docs/cybersecurity)
+- [Github: Awesome Security](https://github.com/sbilly/awesome-security)
 
 ## Keep up with cybersecurity
 
