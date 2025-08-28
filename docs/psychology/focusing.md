@@ -4,9 +4,7 @@ title: Focusing
 
 Focusing is the ability to direct your attention and mental energy toward a specific task or goal, while minimizing distractions. It is a key skill for productivity, learning, and achieving long-term success.
 
----
-
-## 🧠 Key Concepts
+### Key Concepts
 
 - **Delayed Gratification:** The ability to resist immediate rewards in favor of long-term goals. Practicing delayed gratification helps build discipline and focus.
   - [Delayed gratification](https://jamesclear.com/delayed-gratification) - _links to dealing with procrastination_
@@ -16,9 +14,7 @@ Focusing is the ability to direct your attention and mental energy toward a spec
 - **Mindfulness:** Being present and aware of your thoughts, which helps redirect attention when it wanders.
 - **Goal Setting:** Clear, specific goals help prioritize what deserves your focus.
 
----
-
-## 🛠️ Strategies to Improve Focus
+### Strategies to Improve Focus
 
 - **Eliminate Distractions:** Turn off notifications, close unnecessary tabs, and create a quiet workspace.
 - **Time Blocking:** Schedule focused work sessions and breaks (e.g., Pomodoro Technique).
@@ -27,9 +23,7 @@ Focusing is the ability to direct your attention and mental energy toward a spec
 - **Take Care of Your Body:** Regular exercise, good nutrition, and adequate sleep support cognitive function.
 - **Set Clear Goals:** Break big projects into smaller, actionable steps.
 
----
-
-## 📚 Useful Links
+### Links
 
 - [Delayed gratification](https://jamesclear.com/delayed-gratification)
 - [Deep Work by Cal Newport](https://www.calnewport.com/books/deep-work/)
@@ -37,12 +31,8 @@ Focusing is the ability to direct your attention and mental energy toward a spec
 - [The Pomodoro Technique](https://francescocirillo.com/pages/pomodoro-technique)
 - [Mindfulness for Beginners (Mindful.org)](https://www.mindful.org/meditation/mindfulness-getting-started/)
 
----
-
-## 📝 Notes
+### Notes
 
 - Focus is a skill that improves with practice and intention.
 - Regularly review your goals and progress to stay motivated.
 - Accept that lapses in focus are normal—gently bring your attention back when it wanders.
-
----
