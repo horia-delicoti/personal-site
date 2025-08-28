@@ -49,7 +49,7 @@ const config = {
   // Custom fields for use throughout the site (homepage, footer, etc)
   customFields: {
     tagline: "DevOps Engineer | Linux, Ansible, Terraform, CI/CD, Cloud",
-    description: "I am a Platform (DevOps) Engineer dedicated to build scalable, secure, and efficient infrastructures.",
+    description: "DevOps Engineer focused on scalable, secure infrastructure and a cybersecurity enthusiast.",
     linkedin: "https://www.linkedin.com/in/horia-delicoti/",
     github: "https://github.com/horia-delicoti",
     leetcode: "https://leetcode.com/u/horia-delicoti/",
@@ -57,9 +57,11 @@ const config = {
     email: "horia.delicoti@gmail.com",
     typewriterWords: [
       "I love to code.",
-      "I love to automate.",
-      "I observe and optimize performance.",
-      "I integrate security policies.",
+      "I build and secure infrastructure.",
+      "I automate everything.",
+      "I love to solve problems.",
+      "I care about privacy.",
+      "I am a cybersecurity enthusiast."
     ],
     // Custom footer note (not used by default Docusaurus footer)
     footerNote: "Copyright © {new Date().getFullYear()} Horia Delicoti, Powered by Docusaurus.",
@@ -96,6 +98,7 @@ const config = {
   ],
 
   plugins: [
+    // "CTF" page plugin (docs-style)
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -121,6 +124,7 @@ const config = {
         items: [
           {to: '/about', label: 'About Me', position: 'right'},
           {to: '/blog', label: 'Blog', position: 'right'},
+          {to: '/projects', label: 'Projects', position: 'right', activeBaseRegex: `/projects/`}, // Active when on Projects pages
           {to: '/ctf/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
           {
             type: 'docSidebar',
