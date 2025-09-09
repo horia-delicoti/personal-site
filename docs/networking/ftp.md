@@ -7,20 +7,19 @@ description: FTP (File Transfer Protocol) is a standard network protocol used to
 
 ### FTP Commands
 
-```sh title="Connect to an FTP server."
+```sh title="Connect to an FTP server"
 ftp <HOST_IP> <PORT>
 ```
 
-### FTP Commands List
-
-| FTP Command    | Description |
-| ---------------| ----------- |
-| cd   | Change directory |
-| ls   | List content of remote directory |
-| get  | Receive file |
-| dir  | Change directory |
-| status | Show current status |
+```sh title="FTP commands list"
+cd     # change directory
+ls     # list content of remote directory
+get    # receive file
+dir    # change directory
+status # show current status
+```
 
 ### Links
 
 - [FTP commands for linux](https://www.solarwinds.com/serv-u/tutorials/ftp-commands-for-linux-unix)
+- [Go FTP Server](https://github.com/fclairamb/ftpserver) - Go based autonomous FTP server with SFTP, S3, Dropbox, and Google Drive connectors
