@@ -1,5 +1,4 @@
 ---
 title: Psychology
-draft: true
 ---
 
