@@ -5,6 +5,8 @@ description: A list of YouTube channels that focus on educational content, techn
 
 Because of [Digital Addiction](/docs/psychology/digital-addiction), I want to be mindful of my time and use [YouTube](https://www.youtube.com/) as a tool for learning and personal growth but not as a source of mindless scrolling. I use [Focused Youtube Extension](https://addons.mozilla.org/en-US/firefox/addon/focused-youtube/) that removes video suggestions, sidebars, and comments.
 
+Another way to avoid doomscrolling on Youtube is to turn history off from [Google account](https://myaccount.google.com/) settings -> [Data & Privacy](https://myaccount.google.com/data-and-privacy) -> YouTube History -> Pause. This way, Youtube won't be able to recommend videos based on your watch history.
+
 Here are some channels that focus on educational content, technology, and DIY projects.
 I also use [Invidious](https://redirect.invidious.io/) ([Web](https://invidious.io/)), [FreeTube](https://freetubeapp.io/) (desktop), or [NewPipe](https://newpipe.net/) (mobile app) to avoid using the official YouTube app.
 
