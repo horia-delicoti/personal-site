@@ -10,36 +10,49 @@ nmap uses **[scripts](https://nmap.org/nsedoc/scripts/)** that are considered in
 
 ### Basic Usage
 
-```sh
-nmap <IP>
-# Basic scan of a single IP address
-
-nmap -sn <IP>
+```sh title="Discover live hosts in a network. Use this to quickly find which machines are up"
+nmap -sn 10.0.0.0/24
 # -sn: Ping scan - disable port scan (useful for active host, network discovery)
+```
 
-nmap -sC -sV -oN <file> <IP>
-# -sC: Run default scripts - https://nmap.org/nsedoc/categories/default.html
-# -sV: Probe open ports to determine service/version info
-# -oN: Output scan to file
+```sh title="Scan specific ports quickly and 'stealthy'"
+nmap -sS -p 22,80,443 <IP>
+# -sS: TCP SYN (stealth) scan
+# -p : Scan specific ports (22, 80, 443)
+```
 
-nmap -A -O -T4 --script=vuln <IP>
-# -A : Enable OS detection, version detection, script scanning, and traceroute
+```sh title="Scan only the top used ports only (fast scan)"
+nmap --top-ports 100 -T4 <HOST_IP>
+# --top-ports: Scan 100 most common ports
 # -T4: Aggressive timing for faster scan
-# -O: Enable OS detection
-# --script=vuln: Run vulnerability detection scripts
+```
 
+```sh title="Scan ALL ports, stealthy and fast"
 nmap -p- -sS -T4 <IP>
 # -p-: Scan all 65535 ports
 # -sS: TCP SYN (stealth) scan
 # -T4: Faster scan
+```
 
-nmap -p 22,80,443 <IP>
-# -p: Scan specific ports (22, 80, 443)
+```sh title="UDP scanning"
+nmap -sU -T4 -F <HOST_IP>
+# -sU: UDP scan
+# -T4: Aggressive timing for faster scan
+# -F : Fast mode - Scan fewer ports that the default scan
 
 nmap -sU -sS -p 1-1000 <IP>
 # -sU: UDP scan
 # -sS: TCP SYN scan
 # -p : Scan ports 1-1000
+```
+
+```sh
+nmap -sS -A -p- -T4 --script=vuln -oN full-scan <IP>
+# -sS: TCP SYN (stealth) scan
+# -A : Enable OS detection, version detection, script scanning, and traceroute
+# -p-: Scan all 65535 ports
+# -T4: Aggressive timing for faster scan
+# --script=vuln: Run vulnerability detection scripts
 
 nmap -O --osscan-guess <IP>
 # -O: OS detection
@@ -60,6 +73,7 @@ nmap -sV -sC -T4 -min-rate 5000 -p- <IP>
 # -T4: Aggressive timing for faster scan
 # -min-rate 5000: Minimum rate of packets sent per second
 # -p-: Scan all ports
+
 ```
 
 ### Options Summary
@@ -198,7 +212,7 @@ nmap -oN scan_results.txt -oX scan_results.xml -oG scan_results.grepable
 
 ### Ping Sweep
 
-A [ping sweep](https://www.codecademy.com/resources/docs/cybersecurity/nmap/ping-sweep) is a network scanning technique to identify active devices on a network by pinging a range of IP addresses. Compared to other methods, ping sweeps can be harder to detect as it is not as aggressive and can skip regular scan stages, making it more of an advantage. Using `-sn`, nmap disables port scanning and only relies on ICMP echo packets (or ARP requests for local networks) to check if hosts are up.
+A [ping sweep](https://www.codecademy.com/resources/docs/cybersecurity/nmap/ping-sweep) is a network scanning technique to identify active devices on a network by pinging a range of IP addresses. Compared to other methods, ping sweeps can be harder to detect as it is not as aggressive and can skip regular scan stages, making it more of an advantage. Using `-sn`, nmap disables port scanning and only relies on ICMP echo packets (or [ARP](/docs/networking/#arp) requests for local networks) to check if hosts are up.
 
 ```sh
 nmap -sn 192.168.1.0/24
@@ -292,9 +306,7 @@ sequenceDiagram
 
 _To do: Add Wireshark example of TCP SYN scan and TCP Connect scan._
 
-### Advanced Scanning Techniques
-
-### Understanding NSE Scripts
+### NSE Scripts to detect vulnerabilities
 
 Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse.html) allows users to use [NSE scripts](https://nmap.org/nsedoc/scripts/) to automate various tasks, such as vulnerability detection, service discovery, automate exploits and more.
 
@@ -309,9 +321,37 @@ Nmap's [NSE (Nmap Scripting Engine)](https://nmap.org/book/nse.html) allows user
 | Brute     | Attempt to bruteforce credentials for running services |
 | Discovery | Attempt to query running services for further information about the network (e.g. query an SNMP server, HTTP headers) |
 
-```sh
-# Runs only scripts from category "vuln" which target an active service, in this case only vulnerability detection scripts against ports 80 and 443 on the target.
-nmap --script=vuln -p 80,443 192.168.100.1
+:::info
+Use `ls /usr/share/nmap/scripts/` or [NSE scripts](https://nmap.org/nsedoc/scripts/) to explore more targeted scripts based on CTF's scenarios.
+:::
+
+```sh title="Aggressive script scan, identify services/version info, output scan to file"
+nmap -sC -sV <IP>
+# -sC: Run default scripts - https://nmap.org/nsedoc/categories/default.html
+# -sV: Probe open ports to determine service/version info
+# -oN: Output scan to file
+```
+
+```sh title="Use default vuln category scripts agains known services"
+# Runs only scripts from category "vuln" which target an active service,
+# in this case only vulnerability detection scripts against ports 21, 22, 80 and 443 on the target.
+nmap -p 80,443,21,22,445 --script vuln <HOST_IP>
+```
+
+```sh title="Try brute force login on exposed FTP service"
+nmap -p 21 --script ftp-brute <HOST_IP>
+```
+
+```sh title="List web directories and files"
+nmap -p 80,443 --script http-enum <HOST_IP>
+```
+
+```sh title="Scan for SSL/TLS ciphers for HTTPS services"
+nmap -p 443 --script ssl-enum-ciphers <HOST_IP>
+```
+
+```sh title="Detect SMB Shares"
+nmap --script smb-enum-shares -p 445 <HOST_IP>
 ```
 
 ### References
