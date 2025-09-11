@@ -3,7 +3,7 @@ title: Netdiscover
 description: Discover live hosts in a network using Netdiscover, a tool for active/passive AR
 ---
 
-[Netdiscover](https://www.kali.org/tools/netdiscover/) is an active/passive [ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) reconnaissance tool to discover live hosts in a network. It is useful for identifying devices on a local network, especially when you do not have access to the DHCP server. This is useful for stealth reconnaissance in CTFs.
+[Netdiscover](https://www.kali.org/tools/netdiscover/) is an active/passive [ARP](/docs/networking/#arp) reconnaissance tool to discover live hosts in a network. It is useful for identifying devices on a local network, especially when you do not have access to the DHCP server. This is useful for stealth reconnaissance in CTFs.
 
 ```sh title="Identify your network interface"
 ifconfig
