@@ -7,16 +7,16 @@ We start by gathering information about the target system, such as its operating
 
 ### [Nmap](/docs/networking/nmap) Scanning
 
-```sh title="Discover live hosts in a network. Use this to quickly find which machines are up"
-nmap -sn 10.0.0/24
+```sh title="Focus on most used service ports. Scan specific ports quickly and 'stealthy'"
+nmap -sS -p 21,22,80,443 <IP>
 ```
 
-```sh title="Run basic nmap scan, discover open ports, and identify services"
-nmap -sC -sV -oN initial <HOST_IP>
+```sh title="Scan only the top used ports only (fast scan)"
+nmap --top-ports 100 -T4 <HOST_IP>
 ```
 
-```sh title="Let's run a more aggressive scan with OS detection, version detection, script scanning, and traceroute"
-nmap -sS -T4 -A -p- -oN full-scan <HOST_IP>
+```sh title="Aggressive scan with OS detection, version detection, script scanning, and traceroute"
+nmap -sS -A -p- -T4 --script=vuln -oN full-scan <IP>
 ```
 
 ```sh title="Treat host as online, scan all ports, run default scripts, detect service versions, timeout 4s, and save output to a file"
@@ -29,6 +29,10 @@ nmap -sS -T0 --randomize-hosts --data-length 50 <TARGET_IP>
 ```
 
 Scan for vulnerabilities using [NSE scripts](/docs/networking/nmap#nse-scripts-to-detect-vulnerabilities):
+
+```sh title="Aggressive script scan, identify services/version info, output scan to file"
+nmap -sC -sV -oN initial <HOST_IP>
+```
 
 ```sh title="Use default 'vuln' category scripts agains known services"
 nmap -p 80,443,21,22,445 --script vuln <HOST_IP>
