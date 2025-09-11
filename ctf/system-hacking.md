@@ -1,79 +1,65 @@
 ---
 title: System Hacking 💻
 sidebar_position: 2
-draft: true
 ---
 
 We start by gathering information about the target system, such as its operating system, services running, and open ports. Use this to identify potential vulnerabilities that can be exploited.
 
-### Nmap Scanning
+### [Nmap](/docs/networking/nmap) Scanning
 
-Check [nmap wiki](/docs/networking/nmap) for more details.
-
-```sh title="Discover live hosts in a network."
+```sh title="Discover live hosts in a network. Use this to quickly find which machines are up"
 nmap -sn 10.0.0/24
 ```
 
-```sh title="Run basic nmap scan, discover open ports, and identify services."
+```sh title="Run basic nmap scan, discover open ports, and identify services"
 nmap -sC -sV -oN initial <HOST_IP>
 ```
 
-```sh title="Let's run a more aggressive scan with OS detection, version detection, script scanning, and traceroute."
+```sh title="Let's run a more aggressive scan with OS detection, version detection, script scanning, and traceroute"
 nmap -sS -T4 -A -p- -oN full-scan <HOST_IP>
 ```
 
-```sh title="Treat host as online, scan all ports, run default scripts, detect service versions, timeout 4s, and save output to a file."
+```sh title="Treat host as online, scan all ports, run default scripts, detect service versions, timeout 4s, and save output to a file"
 nmap -vv -Pn -p- -sC -sV -T4 -oN complete-scan <HOST_IP>
 ```
 
-Scan for vulnerabilities using [Nmap scripts](https://nmap.org/nsedoc/scripts/):
+```sh title="No scan is truly undetectable, but these options reduce the chance of triggering IDS/IPS alerts"
+nmap -sS -T0 --randomize-hosts --data-length 50 <TARGET_IP>
+# A stealthy scan, paranoid timing(less likely to be detected), randomize order, and add random data to packet to evade detection
+```
 
-```sh title="Use default "vuln" category scripts agains known services."
+Scan for vulnerabilities using [NSE scripts](/docs/networking/nmap#nse-scripts-to-detect-vulnerabilities):
+
+```sh title="Use default 'vuln' category scripts agains known services"
 nmap -p 80,443,21,22,445 --script vuln <HOST_IP>
 ```
 
-```sh title="Try brute force login on exposed FTP service."
-nmap -p 21 --script ftp-brute <HOST_IP>
-```
-
-```sh title="List web directories and files."
+```sh title="List web directories and files"
 nmap -p 80,443 --script http-enum <HOST_IP>
 ```
 
-```sh title="Scan for SSL/TLS ciphers for HTTPS services."
+```sh title="Scan for SSL/TLS ciphers for HTTPS services"
 nmap -p 443 --script ssl-enum-ciphers <HOST_IP>
 ```
 
-### [Netdiscover](https://www.kali.org/tools/netdiscover/) Scanning
+### [Netdiscover](/docs/networking/netdiscover) Scanning
 
-Active/passive ARP reconnaissance tool to discover live hosts in a network. It is useful for identifying devices on a local network, especially when you do not have access to the DHCP server.
-
-```sh
+```sh title="Active ARP reconnaissance tool to discover live hosts in a local network"
 netdiscover -i eth0 -r 10.0.0/24
 ```
 
-```sh title="Identify your network interface."
-ifconfig
-# or
-ip addr
-```
-
-Netdiscover works only on local networks. It cannot discover hosts outside of your subnet.
-
 ### [Nikto](/docs/security/tools/nikto) Scanning
 
-Scan for web vulnerabilities using Nikto, a powerful web scanner that tests for various vulnerabilities in web servers.
-
-```sh
-nikto -h <HOST_IP> -p 80,443
+```sh title="Web scanner for various vulnerabilities in web servers"
+nikto -h <HOST_IP> -p 80,443 -output nikto_scan.txt
 ```
 
 ### [Hydra](/docs/security/tools/hydra) Brute Force Login
 
-```sh title="Brute force SSH login."
+```sh title="Brute force SSH login"
 hydra -l <username> -P <full path to pass> <HOST_IP> -t 4 ssh
 ```
 
-```sh title="Brute force HTTP login."
+```sh title="Brute force HTTP login"
 hydra -l <username> -P rockyou.txt <HOST_IP> http-post-form "<path>:username=^USER^&password=^PASS^:<invalid response>"
 ```
