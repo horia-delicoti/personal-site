@@ -5,6 +5,8 @@ sidebar_position: 2
 
 We start by gathering information about the target system, such as its operating system, services running, and open ports. Use this to identify potential vulnerabilities that can be exploited.
 
+## Identify target
+
 ### [Nmap](/docs/networking/nmap) Scanning
 
 ```sh title="Focus on most used service ports. Scan specific ports quickly and 'stealthy'"
@@ -52,12 +54,6 @@ nmap -p 443 --script ssl-enum-ciphers <HOST_IP>
 netdiscover -i eth0 -r 10.0.0/24
 ```
 
-### [Nikto](/docs/security/tools/nikto) Scanning
-
-```sh title="Web scanner for various vulnerabilities in web servers"
-nikto -h <HOST_IP> -p 80,443 -output nikto_scan.txt
-```
-
 ### [Hydra](/docs/security/tools/hydra) Brute Force Login
 
 ```sh title="Brute force SSH login"
@@ -66,4 +62,81 @@ hydra -l <username> -P <full path to pass> <HOST_IP> -t 4 ssh
 
 ```sh title="Brute force HTTP login"
 hydra -l <username> -P rockyou.txt <HOST_IP> http-post-form "<path>:username=^USER^&password=^PASS^:<invalid response>"
+```
+
+## Web reconnaissance
+
+If Ports **[80 (HTTP)](https://www.cbtnuggets.com/common-ports/what-is-port-80)** or **[443 (HTTPS)](https://www.sectigo.com/resource-library/what-is-port-443)** are open, it usually suggests the presence of a [web service](https://en.wikipedia.org/wiki/Web_service). Let's try to find flags, discover directories and identify version-specific vulnerabilities.
+
+```sh title="Check for hidden files (robots.txt)"
+curl http://<HOST_IP>/robots.txt
+```
+
+```sh title="Identify the Web Server and Version"
+curl -I <HOST_IP>
+```
+
+:::info
+Look at the `Server:` header to identify the web server.
+:::
+
+If Port **80** is Closed but Expected to be Open, this might indicate:
+
+- [Intrusion Detection System (IDS)](https://en.wikipedia.org/wiki/Intrusion_detection_system) active
+- [Port knocking](https://medium.com/@reotmani/port-knocking-dbe6d8aaeb9) mechanism in place
+
+```sh title="Example output"
+nmap -p 80 <HOST_IP>
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+```
+
+```sh title="Rescan with a delay. Sometimes Port availability changes after time"
+sleep 10 & nmap -p 80 <HOST_IP>
+```
+
+```sh title="Use TCP connect scan to bypass SYN scan restriction. SYN Scans (-sS) may be blocked or filtered by firewall, while -sT (full TCP handshake) can bypass it in some setups"
+nmap -sT -p 80 <HOST_IP>
+```
+
+:::info
+Each **[CMS](https://en.wikipedia.org/wiki/Content_management_system)** ([WordPress](https://wordpress.org/), [Joomla](https://www.joomla.org/), [Drupal](https://new.drupal.org/home)) has **[know vulnerabilities](https://agilitycms.com/blog/cms-security-vulnerabilities)** and **[common misconfigurations](https://medium.com/@sriharanmahimala125/common-vulnerabilities-in-wordpress-sites-10157635c3a4)**.
+
+**[Frameworks](https://en.wikipedia.org/wiki/Category:Web_frameworks)** (developer toolkit to build apps like [Django](https://www.djangoproject.com/), [Rails](https://rubyonrails.org/), [Laravel](https://laravel.com/)) have distinct attack surfaces, e.g. Django apps often leak `/admin/` panel or Laravel apps might expose `.env` config files.
+
+Let's use [whatweb](/docs/security/tools/whatweb) or wappalyzer to analyze [HTTP responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status), [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers), [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies), and [HTML code](https://www.w3schools.com/html/html_basic.asp) to guess:
+
+- If the target is running WordPress (CMS) → Try [wpscan](https://github.com/wpscanteam/wpscan)
+- If the target is running Django (framework) → Look for Django debug mode, admin panel
+- If the target is running React.js (frontend) → Might indicate a modern SPA with a backend API to target
+
+:::
+
+### [WhatWeb](/docs/security/tools/whatweb) Scanning
+
+```sh title="Identify websites, recognises web technologies including CMS and frameworks"
+whatweb -v -a 2 --log whatweb.txt <HOST_IP>
+```
+
+```sh title="To enumerate web services and endpoints"
+nmap -sV -p- --script=http-vuln* -oN nmap_http <HOST_IP>
+```
+
+### [Gobuster](/docs/security/tools/gobuster) Scanning
+
+```sh title="To find directories/files"
+gobuster dir -u <HOST_IP> -w /usr/share/wordlists/dirb/common.txt
+```
+
+### [WPscan](/docs/security/tools/wpscan) Scanning
+
+```sh title="if WhatWeb reports WordPress"
+wpscan --url <HOST_IP> --enumerate p,t,u --disable-tls-checks --format json --output wpscan.json
+```
+
+### [Nikto](/docs/security/tools/nikto) Scanning
+
+```sh title="Web scanner to find various vulnerabilities in web servers"
+nikto -h <HOST_IP> -p 80,443 -output nikto_scan.txt
 ```
