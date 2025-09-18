@@ -1,5 +1,5 @@
 ---
-title: "Net Sec Challenge: THM Walkthrough"
+title: "Net Sec Challenge"
 subtitle: "Challenge to test your network security skills."
 date: 2025-07-25
 tags: [tryhackme]

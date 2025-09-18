@@ -7,7 +7,7 @@ We start by gathering information about the target system, such as its operating
 
 ## Identify target
 
-### [Nmap](/docs/networking/nmap) Scanning
+### [Nmap](/docs/networking/nmap)
 
 ```sh title="Focus on most used service ports. Scan specific ports quickly and 'stealthy'"
 nmap -sS -p 21,22,80,443 <IP>
@@ -48,13 +48,13 @@ nmap -p 80,443 --script http-enum <HOST_IP>
 nmap -p 443 --script ssl-enum-ciphers <HOST_IP>
 ```
 
-### [Netdiscover](/docs/networking/netdiscover) Scanning
+### [Netdiscover](/docs/networking/netdiscover)
 
 ```sh title="Active ARP reconnaissance tool to discover live hosts in a local network"
 netdiscover -i eth0 -r 10.0.0/24
 ```
 
-### [Hydra](/docs/security/tools/hydra) Brute Force Login
+### [Hydra](/docs/security/tools/hydra)
 
 ```sh title="Brute force SSH login"
 hydra -l <username> -P <full path to pass> <HOST_IP> -t 4 ssh
@@ -103,17 +103,17 @@ nmap -sT -p 80 <HOST_IP>
 :::info
 Each **[CMS](https://en.wikipedia.org/wiki/Content_management_system)** ([WordPress](https://wordpress.org/), [Joomla](https://www.joomla.org/), [Drupal](https://new.drupal.org/home)) has **[know vulnerabilities](https://agilitycms.com/blog/cms-security-vulnerabilities)** and **[common misconfigurations](https://medium.com/@sriharanmahimala125/common-vulnerabilities-in-wordpress-sites-10157635c3a4)**.
 
-**[Frameworks](https://en.wikipedia.org/wiki/Category:Web_frameworks)** (developer toolkit to build apps like [Django](https://www.djangoproject.com/), [Rails](https://rubyonrails.org/), [Laravel](https://laravel.com/)) have distinct attack surfaces, e.g. Django apps often leak `/admin/` panel or Laravel apps might expose `.env` config files.
+**[Frameworks](https://en.wikipedia.org/wiki/Category:Web_frameworks)** (developer toolkit to build apps like [Django](https://www.djangoproject.com/), [Rails](https://rubyonrails.org/), [Laravel](https://laravel.com/)) have distinct attack surfaces, e.g. Django apps often leak [`/admin/`](https://docs.djangoproject.com/en/5.2/ref/contrib/admin/) panel or Laravel apps might expose [`.env`](https://laravel.com/docs/12.x/configuration) config files.
 
-Let's use [whatweb](/docs/security/tools/whatweb) or wappalyzer to analyze [HTTP responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status), [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers), [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies), and [HTML code](https://www.w3schools.com/html/html_basic.asp) to guess:
+Let's use [whatweb](/docs/security/tools/whatweb) or [wappalyzer](/docs/security/tools/wappalyzer) to analyze [HTTP responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status), [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers), [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies), and [HTML code](https://www.w3schools.com/html/html_basic.asp) to guess:
 
 - If the target is running WordPress (CMS) → Try [wpscan](https://github.com/wpscanteam/wpscan)
-- If the target is running Django (framework) → Look for Django debug mode, admin panel
+- If the target is running Django (framework) → Look for [Django debug mode](https://docs.djangoproject.com/en/5.2/ref/settings/), [admin panel](https://docs.djangoproject.com/en/5.2/ref/contrib/admin/)
 - If the target is running React.js (frontend) → Might indicate a modern SPA with a backend API to target
 
 :::
 
-### [WhatWeb](/docs/security/tools/whatweb) Scanning
+### [WhatWeb](/docs/security/tools/whatweb)
 
 ```sh title="Identify websites, recognises web technologies including CMS and frameworks"
 whatweb -v -a 2 --log whatweb.txt <HOST_IP>
@@ -123,19 +123,19 @@ whatweb -v -a 2 --log whatweb.txt <HOST_IP>
 nmap -sV -p- --script=http-vuln* -oN nmap_http <HOST_IP>
 ```
 
-### [Gobuster](/docs/security/tools/gobuster) Scanning
+### [Gobuster](/docs/security/tools/gobuster)
 
 ```sh title="To find directories/files"
 gobuster dir -u <HOST_IP> -w /usr/share/wordlists/dirb/common.txt
 ```
 
-### [WPscan](/docs/security/tools/wpscan) Scanning
+### [WPscan](/docs/security/tools/wpscan)
 
-```sh title="if WhatWeb reports WordPress"
+```sh title="If WhatWeb reports WordPress"
 wpscan --url <HOST_IP> --enumerate p,t,u --disable-tls-checks --format json --output wpscan.json
 ```
 
-### [Nikto](/docs/security/tools/nikto) Scanning
+### [Nikto](/docs/security/tools/nikto)
 
 ```sh title="Web scanner to find various vulnerabilities in web servers"
 nikto -h <HOST_IP> -p 80,443 -output nikto_scan.txt

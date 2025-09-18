@@ -1,5 +1,5 @@
 ---
-title: "Pickle Rick: THM Walkthrough"
+title: "Pickle Rick"
 subtitle: "A Rick and Morty CTF. Help turn Rick back into a human!"
 date: 2025-06-27
 tags: [tryhackme]

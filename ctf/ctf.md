@@ -18,6 +18,11 @@ These are my notes and resources for participating in CTFs or Hack the Box. I've
 - [PicoCTF](https://picoctf.com/) - Beginner friendly CTF platform with a focus on high school students.
 - [Root Me](https://www.root-me.org/) - A platform with a wide range of challenges in various categories.
 - [Hacker101 CTF](https://www.hacker101.com/) - A CTF platform by HackerOne with a focus on web hacking.
+- [Hack Smarter](https://hacksmarter.org/) - A CTF platform with a focus on web hacking and reverse engineering.
+
+### CTF Writeups
+
+- [Writeups by Oxbob](https://0xb0b.gitbook.io/writeups) - A collection of write-ups for CTF challenges by Oxbob.
 
 ### YouTube Channels
 
