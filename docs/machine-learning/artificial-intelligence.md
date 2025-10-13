@@ -13,6 +13,12 @@ title: Artificial Intelligence
 - [AI Ethics Resources](https://aiethicslab.com/)
 - [AI Papers on arXiv](https://arxiv.org/list/cs.AI/recent)
 - [Lumo](https://lumo.proton.me/guest) - AI chat focused on privacy and security
+- [Code Agents](https://codegen.com/) - Integrate AI into your applications, generate code, and automate tasks.
+
+### Generate Videos
+
+- [Meta Vibes AI](https://about.fb.com/news/2025/09/introducing-vibes-ai-videos/)
+- [OpenAI Sora](https://openai.com/index/sora-2/)
 
 ### AI Platforms & Models
 
@@ -45,3 +51,8 @@ title: Artificial Intelligence
 ## 📚 Books
 
 - [Awesome AI books](https://github.com/zslucky/awesome-AI-books)
+
+### Regulating AI
+
+- [Why AI is our ultimate test and greatest invitation](https://www.youtube.com/watch?v=6kPHnl-RsVI)
+- [Center for humane technology](https://centerforhumanetechnology.substack.com/)
