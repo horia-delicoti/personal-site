@@ -16,11 +16,11 @@ The OSI Model breaks down network communication into seven layers. These layers 
 
 | Layer Name  | Main Function | Example Protocols and Standards |
 | ----------- | ------------- | ------------------------------- |
-| **7. Application Layer** | Human-computer interaction layer, where applications can access the network services | HTTP, FTP, SMTP, DNS, IMAP |
-| **6. Presentation Layer** | Ensures that data is in a usable format and is where data encryption occurs | JPEG, PNG, GIF, SSL/TLS, Unicode |
+| **7. Application Layer** | Human-computer interaction layer, where applications can access the network services | [HTTP](/docs/networking/http), FTP, SMTP, [DNS](/docs/networking/dns), IMAP |
+| **6. Presentation Layer** | Ensures that data is in a usable format and is where data encryption occurs | JPEG, PNG, GIF, [SSL/TLS](/docs/networking/ssl), Unicode |
 | **5. Session Layer** | Maintains connections and is responsible for controlling ports and sessions | NFS, RPC, PPTP |
-| **4. Transport Layer** | Transmits data using transmissions protocols | TCP, UDP |
-| **3. Network Layer** | Decides which physical path the data will take | IP, ICMP, IPSec, ARP |
+| **4. Transport Layer** | Transmits data using transmissions protocols | [TCP](/docs/networking/tcp), UDP |
+| **3. Network Layer** | Decides which physical path the data will take | IP, [ICMP](/docs/networking#icmp), IPSec, ARP |
 | **2. Data Link Layer** | Defines the format of data on the network | Ethernet (802.3), WiFi (802.11) |
 | **1. Physical Layer** | Transmits raw bit streams over a physical medium | Ethernet cables, fiber optics, radio waves (wireless signals) |
 
