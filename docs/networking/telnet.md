@@ -7,7 +7,19 @@ subtitle: A simple command-line tool for remote communication.
 
 ### Commands
 
-```sh
-telnet <HOST> <PORT>
-telnet 10.10.10.34 7
+```sh title="Use telnet to connect to http server and fetch a web page"
+$ telnet <HOST_IP> 80  # open session to port 80
+Trying 10.10.141.196...
+Connected to 10.10.141.196.
+Escape character is '^]'.
+GET /flag.html HTTP/1.1  # send HTTP request. Type each line and press Enter
+Host: anything # host header is required by HTTP/1.1. Press Enter twice after the last line.
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 123
+
+<html>...
+<!-- flag content here -->
+</html>
 ```
