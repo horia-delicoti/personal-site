@@ -1,0 +1,30 @@
+/**
+  * The icon is used in multiple places, we define the styles here and import them where needed.
+  * The icon is an SVG element, so we can style it with CSS.
+  * We define three sizes: small, medium, large. The default size is medium.
+  * The color is a pinkish color, but it can be overridden by the parent element.
+  * The width and height are set to 1em, so they scale with the font size of the parent element.
+  * The fill is set to currentColor, so it inherits the color of the parent element.
+  * The user-select is set to none, so the icon is not selectable.
+ */
+
+.svg {
+  user-select: none;
+  color: #e9669e;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+}
+
+.small {
+  font-size: 1rem;
+}
+
+.medium {
+  font-size: 1.25rem;
+}
+
+.large {
+  font-size: 1.8rem;
+}
