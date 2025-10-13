@@ -5,7 +5,7 @@ description: A list of YouTube channels that focus on educational content, techn
 
 Because of [Digital Addiction](/docs/psychology/digital-addiction), I want to be mindful of my time and use [YouTube](https://www.youtube.com/) as a tool for learning and personal growth but not as a source of mindless scrolling. I use [Focused Youtube Extension](https://addons.mozilla.org/en-US/firefox/addon/focused-youtube/) that removes video suggestions, sidebars, and comments.
 
-Another way to avoid doomscrolling on Youtube is to turn history off from [Google account](https://myaccount.google.com/) settings -> [Data & Privacy](https://myaccount.google.com/data-and-privacy) -> YouTube History -> Pause. This way, Youtube won't be able to recommend videos based on your watch history.
+Another way to avoid [doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling) on Youtube is to turn history off from [Google account](https://myaccount.google.com/) settings -> [Data & Privacy](https://myaccount.google.com/data-and-privacy) -> YouTube History -> Pause. This way, Youtube won't be able to recommend videos based on your watch history.
 
 Here are some channels that focus on educational content, technology, and DIY projects.
 I also use [Invidious](https://redirect.invidious.io/) ([Web](https://invidious.io/)), [FreeTube](https://freetubeapp.io/) (desktop), or [NewPipe](https://newpipe.net/) (mobile app) to avoid using the official YouTube app.
@@ -57,6 +57,7 @@ I also use [Invidious](https://redirect.invidious.io/) ([Web](https://invidious.
 - [Free Code Camp](https://www.youtube.com/@freecodecamp) - High quality programming tutorials
 - [TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana) - DevOps Simply Explained
 - [Internet Made Coder](https://www.youtube.com/@InternetMadeCoder) - Web Development, Coding and Programming Tutorials
+- [Logos By Nick](https://www.youtube.com/@LogosByNick) - Logos, Graphic Design, Inkscape and GIMP Tutorials
 
 ### AI, Machine Learning & Data Science
 
@@ -75,6 +76,7 @@ I also use [Invidious](https://redirect.invidious.io/) ([Web](https://invidious.
 - [ThrillSeekerVR](https://www.youtube.com/@ThrillSeekerVR) - Virtual reality stuff
 - [Hipyo Tech](https://www.youtube.com/@HipyoTech) - Cool mechanical keyboard stuff
 - [Undecided with Matt Ferrell](https://www.youtube.com/@UndecidedMF) - How sustainable and smart technologies impact our lives
+- [Mr Whose The Boss](https://www.youtube.com/@Mrwhosetheboss) - Tech reviews and tech discussions
 
 ### Cryptocurrency, Blockchain, Fintech & Investment
 
