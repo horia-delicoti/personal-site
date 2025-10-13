@@ -108,6 +108,17 @@ const config = {
         sidebarPath: './sidebars.js',
       },
     ],
+    // Ideal Image plugin used by Docusaurus Showcase (@theme/IdealImage)
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030, // max resized image's size.
+        min: 640,  // min resized image's size. if original is lower, use that size.
+        steps: 2,  // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
   ],
 
   // Theme configuration (navbar, code highlighting, etc)
@@ -125,7 +136,7 @@ const config = {
           {to: '/about', label: 'About Me', position: 'right'},
           {to: '/blog', label: 'Blog', position: 'right'},
           {to: '/projects', label: 'Projects', position: 'right', activeBaseRegex: `/projects/`}, // Active when on Projects pages
-          {to: '/ctf/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
+          {to: '/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
