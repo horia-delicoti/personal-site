@@ -1,13 +1,13 @@
 # Workflow for deploying static content to GitHub Pages
 name: Deploy to GitHub Pages
 
-# Runs on pushes targeting the default branch
+# Review gh actions docs if you want to further define triggers, paths, etc
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+# Trigger only when a tag is pushed
 on:
   push:
-    branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    tags:
+      - '*' # Triggers on any tag (e.g., v1.0.0, release-2025.10.08, etc.)
 
 jobs:
   build:
