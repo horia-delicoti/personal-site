@@ -3,9 +3,16 @@
 name: 🚚 Release
 
 on:
+  # 1️⃣ Trigger on any tag push
   push:
     tags:
-      - '*'  # Runs when you push a version tag, e.g. v1.0.0
+      - '*'  # e.g., v1.0.0, v2.3.1
+
+  # 2️⃣ Trigger when the "🏷️ Tag" workflow completes
+  workflow_run:
+    workflows: ["🏷️ Tag"]
+    types:
+      - completed
 
 jobs:
   release:
