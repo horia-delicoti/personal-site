@@ -1,0 +1,38 @@
+# Create a GitHub Release when a new tag is pushed
+
+name: 🚚 Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Runs when you push a version tag, e.g. v1.0.0
+
+jobs:
+  release:
+    name: 🧾 Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Needed to create the release
+
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🏷️ Extract version from tag
+        id: vars
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: 🧾 Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.version }}
+          name: "🚀 Release ${{ env.version }}"
+          body: |
+            ## Changes in ${{ env.version }}
+            - ✨ New improvements and fixes
+            - 🧱 Built with Docusaurus
+            - 🌐 Automatically deployed to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
