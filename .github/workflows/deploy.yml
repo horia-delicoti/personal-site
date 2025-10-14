@@ -1,6 +1,6 @@
 # Deploy Docusaurus site to GitHub Pages
 
-name: 🚀 Deploy to GitHub Pages
+name: 🚀 Deploy
 
 on:
   release:

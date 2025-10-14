@@ -1,6 +1,6 @@
 # Create a GitHub Release when a new tag is pushed
 
-name: 🚚 Create GitHub Release
+name: 🚚 Release
 
 on:
   push:
