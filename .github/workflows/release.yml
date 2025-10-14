@@ -5,7 +5,7 @@ name: 🚚 Release
 on:
   push:
     tags:
-      - 'v*'  # Runs when you push a version tag, e.g. v1.0.0
+      - '*'  # Runs when you push a version tag, e.g. v1.0.0
 
 jobs:
   release:
