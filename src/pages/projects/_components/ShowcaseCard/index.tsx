@@ -16,6 +16,13 @@ import {sortBy} from '../../../../utils/jsUtils';
 // import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
+// Helper to detect external URLs (http(s), mailto, tel, or protocol-relative)
+const isExternalUrl = (u?: string) => {
+  if (!u) return false;
+  // Matches: http://, https://, // (protocol relative), mailto:, tel:, or starting with www.
+  return /^(https?:|mailto:|tel:|\/\/)/i.test(u as string) || /^www\./i.test(u as string);
+};
+
 function TagItem({
   label,
   emoji,
@@ -100,28 +107,55 @@ function ShowcaseCard({user}: {user: Project}) {
       <div className="card__body">
         <div className={clsx(styles.showcaseCardHeader)}>
           <h4 className={styles.showcaseCardTitle}>
-            <Link to={user.website ?? '#'} className={styles.showcaseCardLink}>
-              {user.title}
-            </Link>
+            {user.website && isExternalUrl(user.website) ? (
+              <a
+                href={user.website}
+                className={styles.showcaseCardLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {user.title}
+              </a>
+            ) : (
+              <Link to={user.website ?? '#'} className={styles.showcaseCardLink}>
+                {user.title}
+              </Link>
+            )}
           </h4>
           {user.website && (
-            <Link
-              to={user.website}
-              className={clsx('button button--primary button--sm')}
-              style={{marginRight: '0.5rem'}}
-            >
-              🚀 live
-            </Link>
+            isExternalUrl(user.website) ? (
+              <a
+                href={user.website}
+                className={clsx('button button--primary button--sm')}
+                style={{marginRight: '0.5rem'}}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🚀 live
+              </a>
+            ) : (
+              <Link
+                to={user.website}
+                className={clsx('button button--primary button--sm')}
+                style={{marginRight: '0.5rem'}}
+              >
+                🚀 live
+              </Link>
+            )
           )}
           {user.source && (
-            <Link
-              to={user.source}
+            // Source URLs are external (GitHub etc.) — render as anchor
+            <a
+              href={user.source}
               className={clsx(
                 'button button--secondary button--sm',
                 styles.showcaseCardSrcBtn,
-              )}>
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               🐙 source
-            </Link>
+            </a>
           )}
         </div>
         <p className={styles.showcaseCardBody}>{user.description}</p>

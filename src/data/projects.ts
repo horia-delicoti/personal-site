@@ -36,7 +36,6 @@ export const projects: Project[] = [
   {
     title: 'Infrastructure',
     description: 'Homelab and cloud infra using Ansible, and Docker.',
-    website: '',
     source: 'https://github.com/horia-delicoti/infrastructure',
     preview: '/img/projects/infrastructure.png', // local image under static/img/projects
     tags: ['ansible', 'docker'],
