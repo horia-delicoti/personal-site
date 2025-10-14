@@ -9,29 +9,30 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import Image from '@theme/IdealImage';
+// import Link from '@docusaurus/Link';
+import { Link } from 'react-router-dom';
 import {Tags, TagList, type TagType, type Project} from '../../../../data/projects';
 import {sortBy} from '../../../../utils/jsUtils';
-import Heading from '@theme/Heading';
+// import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 function TagItem({
   label,
+  emoji,
   description,
   color,
 }: {
   label: string;
+  emoji?: React.ReactNode;
   description: string;
   color: string;
 }) {
   return (
-    <li className={styles.tag} title={description}>
+    <li className={styles.tag} title={description} style={{backgroundColor: color}}>
       <span className={styles.textLabel}>
-        {/* emoji will be included by the caller in the label */}
+        {emoji ? <span style={{marginRight: 6}}>{emoji}</span> : null}
         {label.toLowerCase()}
       </span>
-      <span className={styles.colorLabel} style={{backgroundColor: color}} />
     </li>
   );
 }
@@ -50,12 +51,13 @@ function ShowcaseCardTag({tags}: {tags: TagType[]}) {
         const emoji = (() => {
           switch (tagObject.tag) {
             case 'python':
-              return '🐍';
+              return <img src="/img/projects/logo/python.png" aria-hidden="true" className={styles.tagIcon} />;
             case 'docker':
               return '🐳';
             case 'react':
-            case 'docusaurus':
               return '⚛️';
+            case 'docusaurus':
+              return <img src="/img/projects/logo/docusaurus.svg" aria-hidden="true" className={styles.tagIcon} />;
             case 'terraform':
               return '📦';
             case 'ansible':
@@ -69,9 +71,10 @@ function ShowcaseCardTag({tags}: {tags: TagType[]}) {
         return (
           <TagItem
             key={index}
-            {...tagObject}
-            // Prepend emoji to the label for visual cue
-            label={`${emoji} ${tagObject.label}`}
+            label={tagObject.label}
+            description={tagObject.description}
+            color={tagObject.color}
+            emoji={emoji}
           />
         );
       })}
@@ -92,18 +95,18 @@ function ShowcaseCard({user}: {user: Project}) {
   return (
     <li key={user.title} className="card shadow--md">
       <div className={clsx('card__image', styles.showcaseCardImage)}>
-        <Image img={image} alt={user.title} />
+        <img src={image} alt={user.title} className={styles.showcaseCardImage} />
       </div>
       <div className="card__body">
         <div className={clsx(styles.showcaseCardHeader)}>
-          <Heading as="h4" className={styles.showcaseCardTitle}>
-            <Link href={user.website} className={styles.showcaseCardLink}>
+          <h4 className={styles.showcaseCardTitle}>
+            <Link to={user.website ?? '#'} className={styles.showcaseCardLink}>
               {user.title}
             </Link>
-          </Heading>
+          </h4>
           {user.website && (
             <Link
-              href={user.website}
+              to={user.website}
               className={clsx('button button--primary button--sm')}
               style={{marginRight: '0.5rem'}}
             >
@@ -112,7 +115,7 @@ function ShowcaseCard({user}: {user: Project}) {
           )}
           {user.source && (
             <Link
-              href={user.source}
+              to={user.source}
               className={clsx(
                 'button button--secondary button--sm',
                 styles.showcaseCardSrcBtn,
