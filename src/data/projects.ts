@@ -9,13 +9,14 @@ export type TagType = keyof typeof Tags;
 
 // Define your tags here
 export const Tags = {
-  terraform: { label: 'Terraform', description: 'IaC / Terraform', color: '#623ce4' },
-  ansible: { label: 'Ansible', description: 'Configuration management', color: '#ee0000' },
+  terraform: { label: 'Terraform', description: 'IaC / Terraform', color: '#9276efff' },
+  ansible: { label: 'Ansible', description: 'Configuration management', color: '#f88585ff' },
   docker: { label: 'Docker', description: 'Containerization', color: '#2496ed' },
-  docusaurus: { label: 'Docusaurus', description: 'Static site / React', color: '#2b6cb0' },
+  docusaurus: { label: 'Docusaurus', description: 'Static site / React', color: '#7df9abff' },
   react: { label: 'React', description: 'React.js', color: '#61dafb' },
-  python: { label: 'Python', description: 'Python scripts', color: '#3572A5' },
-  latex: { label: 'LaTeX', description: 'Documentation / typesetting', color: '#008080' },
+  python: { label: 'Python', description: 'Python scripts', color: '#60a6dfff' },
+  latex: { label: 'LaTeX', description: 'Documentation / typesetting', color: '#08bebeff' },
+  json_resume: { label: 'JSON Resume', description: 'Documentation / typesetting', color: '#41a2a2ff' },
 } as const;
 
 export const TagList: TagType[] = ['terraform', 'ansible', 'docker', 'docusaurus', 'react', 'python', 'latex'];
@@ -43,7 +44,6 @@ export const projects: Project[] = [
   {
     title: 'Personal Site',
     description: 'This very website, built with Docusaurus and deployed on GitHub Pages.',
-    website: 'https://horia.delicoti.com',
     source: 'https://github.com/horia-delicoti/personal-site',
     preview: '/img/projects/personal-site.png',
     tags: ['docusaurus', 'react'],
@@ -57,9 +57,9 @@ export const projects: Project[] = [
   },
   {
     title: 'CV',
-    description: 'My CV in LaTeX format.',
+    description: '📄Source code for my CV | Generated LaTeX PDF from JSON Resume data',
     source: 'https://github.com/horia-delicoti/cv',
     preview: '/img/projects/cv.png',
-    tags: ['latex'],
+    tags: ['latex', 'python', 'json_resume'],
   }
 ];
