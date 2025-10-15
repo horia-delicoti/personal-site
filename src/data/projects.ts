@@ -16,7 +16,8 @@ export const Tags = {
   react: { label: 'React', description: 'React.js', color: '#61dafb' },
   python: { label: 'Python', description: 'Python scripts', color: '#60a6dfff' },
   latex: { label: 'LaTeX', description: 'Documentation / typesetting', color: '#08bebeff' },
-  json_resume: { label: 'JSON Resume', description: 'Documentation / typesetting', color: '#41a2a2ff' },
+  json_resume: { label: 'Json', description: 'Documentation / typesetting', color: '#41a2a2ff' },
+  jinja: { label: 'Jinja', description: 'Template engine for Python', color: '#f27474ff' },
 } as const;
 
 export const TagList: TagType[] = ['terraform', 'ansible', 'docker', 'docusaurus', 'react', 'python', 'latex'];
@@ -59,6 +60,6 @@ export const projects: Project[] = [
     description: '📄Source code for my CV | Generated LaTeX PDF from JSON Resume data',
     source: 'https://github.com/horia-delicoti/cv',
     preview: '/img/projects/cv.png',
-    tags: ['latex', 'python', 'json_resume'],
+    tags: ['python', 'latex', 'jinja'],
   }
 ];

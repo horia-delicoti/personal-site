@@ -71,6 +71,8 @@ function ShowcaseCardTag({tags}: {tags: TagType[]}) {
               return '🤖';
             case 'latex':
               return '📐';
+            case 'jinja':
+              return <img src="/img/projects/logo/jinja.png" aria-hidden="true" className={styles.tagIcon} />;
             default:
               return '🔧';
           }
