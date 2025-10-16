@@ -3,8 +3,9 @@
 name: 🚀 Deploy
 
 on:
+  workflow_dispatch: {}          # allow manual runs from Actions UI
   release:
-    types: [published] # Trigger this workflow when a release is published
+    types: [created, published]  # run when a release is created (or published)
 
 jobs:
   build:
