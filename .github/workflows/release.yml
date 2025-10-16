@@ -38,7 +38,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG_VERSION }}
-          name: "🚀 Release ${{ env.TAG_VERSION }}"
+          name: "🚀 ${{ env.TAG_VERSION }}"
           body: |
             ## Changes in ${{ env.TAG_VERSION }}
             - ✨ New improvements and fixes
