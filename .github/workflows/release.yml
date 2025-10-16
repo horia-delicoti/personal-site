@@ -44,5 +44,7 @@ jobs:
             - ✨ New improvements and fixes
             - 🧱 Built with Docusaurus
             - 🌐 Automatically deployed to GitHub Pages
+
+            **Full Changelog**: https://github.com/horia-delicoti/personal-site/commits/${{ env.TAG_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
