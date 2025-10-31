@@ -1,9 +1,18 @@
-# Personal Website
+[![🚀 Deploy](https://github.com/horia-delicoti/personal-site/actions/workflows/deploy.yml/badge.svg)][workflow_deploy]
+[![🚚 Release](https://github.com/horia-delicoti/personal-site/actions/workflows/release.yml/badge.svg)][workflow_release]
+[![🏷️ Tag](https://github.com/horia-delicoti/personal-site/actions/workflows/tag.yml/badge.svg)][workflow_tag]
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)][mit]
+[![Made with Docusaurus](https://img.shields.io/badge/Made%20with-Docusaurus-blue.svg)][docusaurus]
 
-This is the source code for my personal website, built with [Docusaurus 3](https://docusaurus.io/).  
-The site serves as a portfolio, blog, and technical wiki where I document projects, share knowledge, and braindump ideas.
-
----
+<h1 align="center">💫 My Website</h1>
+<p align="center">
+<a href="https://github.com/horia-delicoti/personal-site"><img src="./images/website-logo.png" width="48"/></a><br>
+<i>My website where I share blog posts, CTF writeups, and a wiki</i>
+<br />
+<i>Built with <a href="https://docusaurus.io/">Docusaurus</a></i>
+<br />
+<b> 🔗 <a href="https://horia.delicoti.com"><code>horia.delicoti.com</code></a></b> <br />
+</p>
 
 ## 🚀 Installation
 
@@ -79,13 +88,18 @@ personal-site/
 
 ---
 
+## Resources
+
+- [personal-website](https://github.com/topics/personal-website)
+
+---
+
 ## 📚 References
 
 - [Docusaurus Documentation](https://docusaurus.io/docs)
 - [GitHub Pages Deployment Guide](https://docusaurus.io/docs/deployment)
 - [React Documentation](https://react.dev/)
 - [Meta Knowledge](https://github.com/RichardLitt/meta-knowledge)
-- [Nikiv](https://nikiv.dev/) - My blog is inspired from here. Check it out
 
 ---
 
@@ -99,3 +113,9 @@ personal-site/
 - [ ] Collect site analytics
 
 ---
+
+[workflow_tag]: https://github.com/horia-delicoti/personal-site/actions/workflows/tag.yml
+[workflow_release]: https://github.com/horia-delicoti/personal-site/actions/workflows/release.yml
+[workflow_deploy]: https://github.com/horia-delicoti/personal-site/actions/workflows/deploy.yml
+[docusaurus]: https://docusaurus.io/
+[mit]: https://opensource.org/licenses/MIT
