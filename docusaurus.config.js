@@ -48,7 +48,7 @@ const config = {
 
   scripts: [
     {
-      src: 'https://umami.home.delicoti.com/script.js',
+      src: 'https://umami.delicoti.com/script.js',
       defer: true,
       'data-website-id': '75d90222-a511-4beb-866c-29c6a3459077',
     },
