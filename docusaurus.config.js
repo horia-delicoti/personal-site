@@ -46,6 +46,14 @@ const config = {
     locales: ['en'],
   },
 
+  scripts: [
+    {
+      src: 'https://umami.home.delicoti.com/script.js',
+      defer: true,
+      'data-website-id': '75d90222-a511-4beb-866c-29c6a3459077',
+    },
+  ],
+
   // Custom fields for use throughout the site (homepage, footer, etc)
   customFields: {
     tagline: "DevOps Engineer | Linux, Ansible, Terraform, CI/CD, Cloud",
@@ -138,10 +146,9 @@ const config = {
           {to: '/projects', label: 'Projects', position: 'right', activeBaseRegex: `/projects/`}, // Active when on Projects pages
           {to: '/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'right',
+            href: 'https://wiki.horia.delicoti.com/',
             label: 'Wiki',
+            position: 'right',
           },
           {
             href: 'https://github.com/horia-delicoti',
