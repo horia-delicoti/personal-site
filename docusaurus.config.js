@@ -144,7 +144,11 @@ const config = {
           {to: '/about', label: 'About Me', position: 'right'},
           {to: '/blog', label: 'Blog', position: 'right'},
           {to: '/projects', label: 'Projects', position: 'right', activeBaseRegex: `/projects/`}, // Active when on Projects pages
-          {to: '/ctf', label: 'CTF', position: 'right', activeBaseRegex: `/ctf/`}, // Active when on CTF pages
+          {
+            href: 'https://ctf.horia.delicoti.com/',
+            label: 'CTF',
+            position: 'right',
+          },
           {
             href: 'https://wiki.horia.delicoti.com/',
             label: 'Wiki',
